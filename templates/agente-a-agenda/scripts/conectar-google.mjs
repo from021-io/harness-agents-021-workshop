@@ -38,6 +38,56 @@ function guardarEnEnv(clave, valor) {
   writeFileSync(ENV_PATH, contenido);
 }
 
+// Página que ve el usuario en el navegador al volver de Google.
+function pagina({ icono, titulo, mensaje, nota, tono }) {
+  const acento = tono === "error" ? "#e8663d" : tono === "aviso" ? "#e0a13a" : "#22a06b";
+  return `<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${titulo}</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f4f5f7; color: #16181d;
+  }
+  .card {
+    width: min(480px, 100%); background: #fff; border-radius: 20px; padding: 44px 36px 38px;
+    text-align: center; box-shadow: 0 1px 2px rgba(16,18,29,.06), 0 12px 40px rgba(16,18,29,.10);
+    animation: entrar .45s cubic-bezier(.2,.8,.3,1) both;
+  }
+  .icono {
+    width: 76px; height: 76px; margin: 0 auto 22px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 36px; line-height: 1;
+    background: color-mix(in srgb, ${acento} 14%, transparent);
+    animation: latir .5s .15s cubic-bezier(.2,.8,.3,1) both;
+  }
+  h1 { margin: 0 0 10px; font-size: 25px; letter-spacing: -.02em; }
+  p { margin: 0; font-size: 16px; line-height: 1.55; color: #5a6072; }
+  .nota {
+    margin-top: 26px; padding-top: 20px; border-top: 1px solid #e8eaef;
+    font-size: 14px; color: #7a8194;
+  }
+  @keyframes entrar { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+  @keyframes latir { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+  @media (prefers-reduced-motion: reduce) { .card, .icono { animation: none } }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0e1014; color: #edeef2; }
+    .card { background: #191c22; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+    p { color: #a2a9ba; }
+    .nota { border-top-color: #272b34; color: #868da0; }
+  }
+</style></head>
+<body><main class="card">
+  <div class="icono">${icono}</div>
+  <h1>${titulo}</h1>
+  <p>${mensaje}</p>
+  ${nota ? `<p class="nota">${nota}</p>` : ""}
+</main></body></html>`;
+}
+
 const env = leerEnv();
 const clientId = process.env.GOOGLE_CLIENT_ID || env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET || env.GOOGLE_CLIENT_SECRET;
@@ -71,9 +121,14 @@ const server = createServer(async (req, res) => {
   if (errorGoogle === "access_denied") {
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     res.end(
-      "<div style='font-family:sans-serif;text-align:center;margin-top:80px'>" +
-        "<h1>🔒 Google todavía no habilitó tu cuenta</h1>" +
-        "<p>La app del taller está en modo prueba. Pedile a quien da el taller que agregue tu correo (o que publique la app) y probamos de nuevo.</p></div>",
+      pagina({
+        icono: "🔒",
+        titulo: "Google todavía no habilitó tu cuenta",
+        mensaje:
+          "La app del taller está en modo prueba, así que Google solo deja entrar a las cuentas cargadas de antemano.",
+        nota: "Pedile a quien da el taller que agregue tu correo, y volvemos a intentar. Ya podés cerrar esta pestaña.",
+        tono: "aviso",
+      }),
     );
     console.error(
       "\n🔒 Google bloqueó el acceso (access_denied).\n" +
@@ -87,7 +142,15 @@ const server = createServer(async (req, res) => {
 
   if (!code || stateRecibido !== state) {
     res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" });
-    res.end("<h2>Algo salió mal. Cerrá esta pestaña y volvé a correr el comando.</h2>");
+    res.end(
+      pagina({
+        icono: "🤔",
+        titulo: "Algo se cruzó en el camino",
+        mensaje: "La respuesta de Google no llegó completa, así que no pudimos conectar tu calendario.",
+        nota: "Cerrá esta pestaña y avisale al asistente del taller: lo intenta de nuevo en un segundo.",
+        tono: "error",
+      }),
+    );
     return;
   }
 
@@ -106,7 +169,15 @@ const server = createServer(async (req, res) => {
 
   if (!tokens.refresh_token) {
     res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" });
-    res.end("<h2>No se recibió el permiso completo. Cerrá esta pestaña y volvé a correr el comando.</h2>");
+    res.end(
+      pagina({
+        icono: "🔁",
+        titulo: "Casi, pero falta un permiso",
+        mensaje: "Google no nos dio el permiso duradero que tu agente necesita para mirar tu agenda cada mañana.",
+        nota: "Cerrá esta pestaña y avisale al asistente del taller: lo intenta de nuevo.",
+        tono: "aviso",
+      }),
+    );
     console.error("Google no devolvió refresh_token:", JSON.stringify(tokens).slice(0, 300));
     server.close();
     process.exit(1);
@@ -115,8 +186,14 @@ const server = createServer(async (req, res) => {
   guardarEnEnv("GOOGLE_REFRESH_TOKEN", tokens.refresh_token);
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
   res.end(
-    "<div style='font-family:sans-serif;text-align:center;margin-top:80px'>" +
-      "<h1>✅ ¡Listo!</h1><p>Tu calendario quedó conectado. Ya podés cerrar esta pestaña y volver al taller.</p></div>",
+    pagina({
+      icono: "📅",
+      titulo: "¡Tu calendario quedó conectado!",
+      mensaje:
+        "Tu agente ya puede mirar tu agenda para encontrarte huecos libres y anotarte los bloques de trabajo.",
+      nota: "Podés cerrar esta pestaña y volver al taller. Te esperamos ahí.",
+      tono: "ok",
+    }),
   );
   console.log("✅ Google Calendar conectado. Permiso guardado en .env.");
   server.close();
