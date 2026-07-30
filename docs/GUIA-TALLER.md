@@ -37,6 +37,8 @@ hagas ninguna pregunta técnica y resolvé lo que falte:
 
 Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
 
+> 💡 **Regla de oro con Claude Code**: cada vez que te pida permiso para hacer algo ("Allow?" / "¿Permitir?"), elegí **Allow** — y si te da la opción, **Always allow** (permitir siempre), así no te vuelve a preguntar. Vale para toda la preparación y todo el taller.
+
 - [ ] Esperá el "✅ Listo para el taller". Puede tardar unos minutos (descarga cosas pesadas). Si algo falla, Claude lo intenta arreglar solo; si se traba, mandale la pantalla al organizador.
 
 **Qué es de quién** (para que no haya sorpresas):
@@ -46,7 +48,7 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 
 ## Minuto a minuto
 
-**0-3 · Arranque.** Abrís Claude Code en la carpeta `taller-agentes` (la que se preparó en tu casa) y escribís `/crear-agente`.
+**0-3 · Arranque.** Abrís Claude Code en la carpeta `taller-agentes` (la que se preparó en tu casa) y escribís `/crear-agente`. Acordate: si pide permiso, **Allow / Always allow**.
 
 **3-10 · La entrevista.** El AI PM te pregunta qué agente querés (agenda o noticias), quién sos y tus preferencias. Respondé como en una charla; acá se define tu agente.
 
