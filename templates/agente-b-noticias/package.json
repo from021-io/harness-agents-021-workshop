@@ -14,7 +14,8 @@
     "build:eve": "eve build",
     "dev:eve": "eve dev",
     "start:eve": "eve start",
-    "conectar-telegram": "node scripts/conectar-telegram.mjs"
+    "conectar-telegram": "node scripts/conectar-telegram.mjs",
+    "telegram-local": "node scripts/telegram-local.mjs"
   },
   "dependencies": {
     "@vercel/connect": "0.4.2",

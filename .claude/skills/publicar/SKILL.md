@@ -19,15 +19,16 @@ Cuenta gratuita de Vercel — debería haberla creado en la preparación previa 
 4. Subí las variables del `.env` al proyecto con `npx vercel env add <NOMBRE> production` para cada una (leé los valores del `.env` local, no se los pidas de nuevo, no los muestres).
 5. Deploy a producción: `npx vercel --prod`. Guardá la URL final.
 6. Verificá: `curl https://<url>/eve/v1/health` responde ok.
-7. **Activá el bot de Telegram** registrando el webhook (leé token y secreto del `.env`):
+7. **Frenó el puente local**: si `npm run telegram-local` sigue corriendo, matalo AHORA (pelea con el webhook: Telegram no permite polling y webhook a la vez).
+8. **Activá el bot de Telegram** registrando el webhook (leé token y secreto del `.env`):
    ```
    curl -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/setWebhook" \
      -H "Content-Type: application/json" \
      -d '{"url":"https://<url>/eve/v1/telegram","secret_token":"<TELEGRAM_WEBHOOK_SECRET_TOKEN>","allowed_updates":["message","callback_query"]}'
    ```
    Confirmá que devuelve `"ok":true`.
-8. **Prueba final en vivo**: decile que le escriba a su bot por Telegram ("preguntale qué sabe hacer"). Confirmá que respondió. Después contale que el envío diario va a llegar solo a la hora que eligió (los relojes de internet corren en hora universal: el horario ya quedó convertido).
-9. Anotá en `DECISIONES.md`: la dirección donde vive el agente y la fecha de publicación.
+9. **Prueba final en vivo**: decile que le escriba a su bot por Telegram ("preguntale qué sabe hacer"). Confirmá que respondió. Después contale que el envío diario va a llegar solo a la hora que eligió (los relojes de internet corren en hora universal: el horario ya quedó convertido).
+10. Anotá en `DECISIONES.md`: la dirección donde vive el agente y la fecha de publicación.
 
 ## Si algo falla
 

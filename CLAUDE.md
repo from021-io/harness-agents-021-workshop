@@ -36,7 +36,8 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 - Los secretos van SOLO en `.env` (nunca en código, nunca los muestres en el chat; al pegarlos, pedile al usuario que los pegue él en el archivo o usá el valor sin repetirlo).
 - El server de desarrollo es `npm run dev` (Next.js + eve embebido): chat web en `http://localhost:3000` y API eve en `http://localhost:3000/eve/v1/*`. Corrélo en background y abrí el preview con las herramientas de browser.
 - Los schedules NO disparan solos en desarrollo: usá `curl -X POST http://localhost:3000/eve/v1/dev/schedules/<nombre>` para probarlos.
-- En Telegram el bot solo funciona en vivo después de publicar (el webhook necesita una URL pública). En el taller se prueba por el chat web del preview y disparando el schedule: el mensaje llega igual al Telegram del usuario porque el envío es saliente.
+- Telegram en local funciona COMPLETO gracias al puente local: corré `npm run telegram-local` en background (junto con `npm run dev`) y el bot contesta los mensajes que el usuario le manda por Telegram, sin publicar nada. El puente hace polling a Telegram y reenvía cada mensaje al endpoint local del canal. Al publicar, el webhook real lo reemplaza (el puente deja de ser necesario).
+- **El momento "probalo"**: cuando todo esté verificado, decile al usuario EXPLÍCITAMENTE cómo probar, con las dos vías: (1) "agarrá el celular y escribile a tu bot por Telegram — pedile por ejemplo *mandame el resumen de hoy*" y (2) el chat del navegador que ya le abriste. Probá vos primero que la vía Telegram responde antes de anunciarla.
 
 ## Fallbacks documentados
 

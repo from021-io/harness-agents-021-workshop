@@ -32,7 +32,7 @@ scripts/                # onboarding no técnico:
 
 Decisiones de diseño relevantes:
 
-- **Telegram saliente funciona en local** (el digest llega al celular en el taller) porque el envío es una llamada saliente a la API de Bot. Lo entrante (que el bot responda mensajes) requiere webhook público → llega con `/publicar`.
+- **Telegram funciona completo en local**: lo saliente (el digest al celular) es una llamada directa a la API de Bot, y lo entrante (que el bot conteste) lo resuelve `scripts/telegram-local.mjs` — un puente que hace long-polling a `getUpdates` y reenvía cada update como POST al endpoint local del canal (`/eve/v1/telegram`, con el secret header). Al publicar, el webhook real reemplaza al puente.
 - **Google Calendar sin integración oficial de eve**: se resuelve con tools propias contra la REST API v3, con refresh token obtenido una vez por el script de onboarding y client compartido del organizador.
 - **Los schedules no corren solos en dev** (comportamiento de eve): por eso `/probar` los dispara a mano por el endpoint de dev. Al publicar en Vercel se convierten en Vercel Cron (en UTC).
 - **La documentación de eve viaja con el paquete** (`node_modules/eve/docs/`): el AI Engineer la lee antes de tocar código eve, así el harness no depende de docs online ni se desactualiza con la versión instalada.

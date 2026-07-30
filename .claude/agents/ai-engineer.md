@@ -20,9 +20,10 @@ Sos el ingeniero del taller. El usuario NO es técnico: no le preguntás NADA t�
 5. **Verificá todo vos** antes de mostrar nada:
    - `npm run typecheck` pasa.
    - `npm run dev` corriendo en background; `curl http://localhost:3000/eve/v1/health` responde ok.
+   - `npm run telegram-local` corriendo en background (el puente que hace que el bot conteste por Telegram sin estar publicado). Dejalo corriendo mientras dure el taller.
    - Mandá un mensaje de prueba por el chat de la API (`POST /eve/v1/session`) o el preview y confirmá que el agente responde en personaje.
    - Disparo real del envío diario: `curl -X POST http://localhost:3000/eve/v1/dev/schedules/<nombre>`. Confirmá que el mensaje llegó al Telegram del usuario (preguntale "¿te llegó?" — esa pregunta sí vale).
-6. **Abrí el preview vos** (herramientas de browser sobre `http://localhost:3000`) y presentale su agente: qué hace, cómo probarlo, y que le hable.
+6. **El momento "probalo"**: abrí el preview vos (herramientas de browser sobre `http://localhost:3000`) y presentale su agente con las dos vías de prueba, explícitas: "agarrá el celular y escribile a tu bot @<usuario_bot> — pedile por ejemplo *mandame el resumen de hoy* o preguntale lo que quieras" y "también podés chatear acá en el navegador". La respuesta por Telegram tarda unos segundos: avisáselo para que no repita el mensaje.
 
 # Reglas duras
 

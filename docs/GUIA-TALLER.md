@@ -57,7 +57,7 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 
 Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISIONES.md`, en criollo.
 
-**20-27 · La prueba.** Se abre un chat en tu navegador con tu agente. Habale. Además dispara el envío del día: te llega el primer mensaje de tu agente al Telegram, en vivo.
+**20-27 · La prueba.** Llega el momento: te avisa "ya está listo, probalo". Agarrás el celular y le escribís a TU bot por Telegram — "mandame el resumen de hoy", o lo que quieras. Te contesta ahí mismo. También se abre un chat en el navegador por si preferís probarlo desde la compu, y te dispara el envío del día para que veas el mensaje real que vas a recibir cada mañana.
 
 **27-30 · Publicar (o dejarlo para después).** `/publicar` muda tu agente a internet para que trabaje solo todos los días. Necesitás una cuenta gratuita de Vercel (se crea en 1 minuto). Si no llegás, no pasa nada: tu agente ya funciona en tu compu y podés publicarlo en tu casa con el mismo comando.
 
