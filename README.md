@@ -45,6 +45,8 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 | `/crear-agente` | El flujo completo: entrevista → construcción → prueba |
 | `/probar` | Levanta tu agente y dispara el envío del día para verlo ya |
 | `/publicar` | Pone tu agente a vivir en internet |
+| `/arreglar` | Lo despierta si dejó de contestarte |
+| `/desconectar` | Le saca los permisos sobre tus cuentas |
 
 ## Cómo está armado (para curiosos)
 

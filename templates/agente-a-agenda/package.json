@@ -16,7 +16,8 @@
     "start:eve": "eve start",
     "conectar-telegram": "node scripts/conectar-telegram.mjs",
     "conectar-google": "node scripts/conectar-google.mjs",
-    "telegram-local": "node scripts/telegram-local.mjs"
+    "telegram-local": "node scripts/telegram-local.mjs",
+    "desconectar-google": "node scripts/desconectar-google.mjs"
   },
   "dependencies": {
     "@vercel/connect": "0.4.2",

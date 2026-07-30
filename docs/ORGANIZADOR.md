@@ -100,7 +100,13 @@ PREPARÁ TU COMPU (sin pasos técnicos):
 - **Tuyo (organizador)**: la llave del modelo (AI Gateway) y el OAuth client de Google. Se reparten el día del evento.
 - Lo que se crea **durante** el taller, guiado y en 1-2 min: el bot de @BotFather, la conexión del chat de Telegram, el permiso de Google Calendar y el login de Vercel (`vercel login`, con la cuenta que ya trajeron).
 
-## 4. El día del taller
+## 4. Cierre limpio de permisos
+
+Si usás un OAuth client compartido, al terminar el taller cada participante le dio a *tu* app acceso a *su* calendario. El asistente ya pregunta en el cierre si quieren cortarlo, y `/desconectar` revoca el permiso contra Google y lo borra del `.env`. Mencionalo en la despedida: da tranquilidad y evita que queden permisos colgados por meses.
+
+Después del taller podés además borrar el OAuth client (o el proyecto entero) desde Google Cloud: con eso ningún permiso otorgado sigue sirviendo.
+
+## 5. El día del taller
 
 - Wifi decente (el paso de instalación ya vino hecho de casa; el taller usa poca red).
 - Tené a mano: la llave del modelo, y Client ID/Secret de Google.

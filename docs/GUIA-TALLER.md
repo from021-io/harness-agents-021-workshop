@@ -82,4 +82,6 @@ Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISION
 
 **¿Mi agente funciona cuando apago la compu?** Después de `/publicar`, sí: vive en internet y te escribe solo todos los días.
 
+**¿Y si no quiero dejarle acceso a mi calendario?** Al final te lo pregunta. Podés cortar el permiso ahí mismo, o cuando quieras escribiendo `/desconectar` en Claude Code: le avisa a Google que lo revoque y lo borra de tu compu. También podés verlo y sacarlo vos desde [tu cuenta de Google](https://myaccount.google.com/permissions).
+
 **¿Puedo pedirle más cosas después?** Sí. Volvé a abrir `claude` en la carpeta y pedile cambios en tus palabras ("quiero el digest a las 7", "agregá noticias de cine"). Para cosas más grandes (guardar historial, usuarios, conectar Notion) hay un camino avanzado: preguntale a Claude Code por `templates/base/avanzado/`.

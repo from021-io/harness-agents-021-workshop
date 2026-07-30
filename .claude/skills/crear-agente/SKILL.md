@@ -15,7 +15,8 @@ Orquestá el taller de punta a punta. El usuario no es técnico; las reglas del 
 4. **La conversación de descubrimiento**: leé `.claude/agents/ai-pm.md` y seguí ese playbook acá mismo. Salida: `mi-agente/PRODUCTO.md`.
 5. **La construcción**: leé `.claude/agents/ai-engineer.md` y seguí ese playbook acá mismo, narrando y enseñando en vivo como dice ahí.
 6. **La sorpresa**: con el agente probado, seguí el skill `pitch`. Una pregunta divertida (fruta favorita, destino soñado…) y armás su mini deck HTML de 5 slides tematizado con la respuesta. Se lo mostrás en el navegador.
-7. **Cierre**: contale al usuario en 3 líneas qué tiene ahora, mostrá el contenido de `DECISIONES.md`, guardá su avance en su GitHub, deck incluido (commit de `mi-agente/` + push a su fork, verificando antes que ningún secreto entre al commit; explicalo como "guardé tu agente en tu GitHub"), y decile que cuando quiera lo publica con `/publicar` para que funcione solo todos los días.
+7. **Preguntá por los permisos** (solo si conectó Google Calendar): "¿querés que tu agente siga con acceso a tu calendario, o preferís que se lo saque ahora?". Neutral, sin empujar para ningún lado: hay gente que lo probó por curiosidad y no quiere dejar permisos dados sobre su cuenta, y otra que lo va a seguir usando. Si dice que sí, seguí el skill `desconectar`. Si dice que no, contale en una línea que puede hacerlo cuando quiera con `/desconectar`.
+8. **Cierre**: contale al usuario en 3 líneas qué tiene ahora, mostrá el contenido de `DECISIONES.md`, guardá su avance en su GitHub, deck incluido (commit de `mi-agente/` + push a su fork, verificando antes que ningún secreto entre al commit; explicalo como "guardé tu agente en tu GitHub"), y decile que cuando quiera lo publica con `/publicar` para que funcione solo todos los días.
 
 ## Si algo ya existe
 
