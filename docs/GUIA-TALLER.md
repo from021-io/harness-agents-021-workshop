@@ -78,7 +78,7 @@ Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISION
 
 **¿Tengo que entender el código?** No. Podés mirarlo si te da curiosidad (`mi-agente/`), pero nada del taller lo requiere.
 
-**¿Qué pasa si algo falla?** El AI Engineer lo arregla solo. Si se traba, avisale al organizador.
+**¿Qué pasa si algo falla?** Se arregla solo. Si tu agente deja de contestarte por Telegram, escribí `/arreglar` en Claude Code: lo despierta en unos segundos. Si sigue trabado, avisale a quien da el taller.
 
 **¿Mi agente funciona cuando apago la compu?** Después de `/publicar`, sí: vive en internet y te escribe solo todos los días.
 
