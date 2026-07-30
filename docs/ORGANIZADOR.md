@@ -73,15 +73,11 @@ PREPARÁ TU COMPU (sin pasos técnicos):
       y descargá mi copia a una carpeta "taller-agentes" en mi
       carpeta personal.
    4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-   5. Dejame en el Escritorio un acceso directo llamado
-      "Taller-Agentes" que al hacerle doble click abra una terminal
-      parada en esa carpeta con el comando claude ya corriendo (en
-      Mac un archivo .command ejecutable; en Windows un .bat). Probá
-      que el archivo quedó bien.
-   6. Verificá que todo haya quedado bien y terminá diciéndome
-      "✅ Listo para el taller", la ubicación de la carpeta, y esta
-      instrucción: el día del taller hago doble click en
-      Taller-Agentes (en el Escritorio) y escribo /crear-agente.
+   5. Verificá que todo haya quedado bien y terminá diciéndome
+      "✅ Listo para el taller", la ruta exacta de la carpeta, y esta
+      instrucción: el día del taller abro una conversación NUEVA en
+      la app de Claude Code, elijo esa carpeta como carpeta de
+      trabajo, y escribo /crear-agente.
 
 8. Esperá el "✅ Listo para el taller" (tarda unos minutos).
    Lo único que hacés en el medio: tocar "Autorizar" cuando se abra

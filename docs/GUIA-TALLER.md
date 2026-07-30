@@ -32,14 +32,11 @@ hagas ninguna pregunta técnica y resolvé lo que falte:
    y descargá mi copia a una carpeta "taller-agentes" en mi carpeta
    personal.
 4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-5. Dejame en el Escritorio un acceso directo llamado "Taller-Agentes"
-   que al hacerle doble click abra una terminal parada en esa carpeta
-   con el comando claude ya corriendo (en Mac un archivo .command
-   ejecutable; en Windows un .bat). Probá que el archivo quedó bien.
-6. Verificá que todo haya quedado bien y terminá diciéndome
-   "✅ Listo para el taller", la ubicación de la carpeta, y esta
-   instrucción: el día del taller hago doble click en Taller-Agentes
-   (en el Escritorio) y escribo /crear-agente.
+5. Verificá que todo haya quedado bien y terminá diciéndome
+   "✅ Listo para el taller", la ruta exacta de la carpeta, y esta
+   instrucción: el día del taller abro una conversación NUEVA en la
+   app de Claude Code, elijo esa carpeta como carpeta de trabajo, y
+   escribo /crear-agente.
 ```
 
 Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
@@ -57,9 +54,9 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 
 ## Minuto a minuto
 
-**0-3 · Arranque.** Doble click en **Taller-Agentes** (el acceso directo que quedó en tu Escritorio en la preparación): se abre una ventana con Claude Code ya parado en la carpeta correcta. Escribí `/crear-agente`.
+**0-3 · Arranque.** Abrí la app de Claude Code y empezá una conversación **nueva** eligiendo la carpeta **`taller-agentes`** como carpeta de trabajo (la ruta te la dio la preparación). Escribí `/crear-agente`.
 
-¿No tenés el acceso directo o dice "Unknown command"? Plan B: abrí una conversación nueva de Claude Code eligiendo la carpeta `taller-agentes` como carpeta de trabajo (en la app), o en la terminal: `cd ~/taller-agentes` y después `claude`. También podés escribir "quiero crear mi agente", hace lo mismo. Acordate: si pide permiso, **Allow / Always allow**.
+¿Dice "Unknown command"? Es que la conversación no está parada en esa carpeta: cerrala y abrí otra eligiéndola bien. (También podés escribir "quiero crear mi agente", hace lo mismo.) Acordate: si pide permiso, **Allow / Always allow**.
 
 **3-10 · La entrevista.** El AI PM te pregunta qué agente querés (agenda o noticias), quién sos y tus preferencias. Respondé como en una charla; acá se define tu agente.
 
