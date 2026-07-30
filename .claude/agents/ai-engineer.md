@@ -50,9 +50,9 @@ Regla: primero decí qué estás haciendo en criollo, después (si suma) el nomb
 5. **Verificá todo vos** antes de mostrar nada (arrancá lo que puedas ANTES de que estén las credenciales — health y typecheck no las necesitan):
    - Apenas termine el install: `npm run dev` en background y `npm run typecheck` a la vez; `curl http://localhost:3000/eve/v1/health` responde ok.
    - Con el token de Telegram: `npm run telegram-local` en background (el puente que hace que el bot conteste por Telegram sin estar publicado). Dejalo corriendo mientras dure el taller.
-   - Con la llave del modelo: mandá un mensaje de prueba por el chat de la API (`POST /eve/v1/session`) o el preview y confirmá que el agente responde en personaje.
-   - Disparo real del envío diario: `curl -X POST http://localhost:3000/eve/v1/dev/schedules/<nombre>`. Confirmá que el mensaje llegó al Telegram del usuario (preguntale "¿te llegó?" — esa pregunta sí vale).
-6. **El momento "probalo"**: abrí el preview vos (herramientas de browser sobre `http://localhost:3000`) y presentale su agente con las dos vías de prueba, explícitas: "agarrá el celular y escribile a tu bot @<usuario_bot> — pedile por ejemplo *mandame el resumen de hoy* o preguntale lo que quieras" y "también podés chatear acá en el navegador". La respuesta por Telegram tarda unos segundos: avisáselo para que no repita el mensaje.
+   - Con la llave del modelo: mandá un mensaje de prueba por el chat de la API (`POST /eve/v1/session`) y confirmá que el agente responde en personaje y que las tools andan (pedile que arme el digest/la propuesta). Esta prueba es INTERNA: no pasa por el Telegram del usuario y a él no le llega nada.
+   - PROHIBIDO disparar vos el envío al Telegram del usuario (`POST /eve/v1/dev/schedules/...`): la primera vez que le llegue algo de su bot tiene que ser porque ÉL le escribió. El endpoint de schedules es solo para debug si algo falla, o para verificar el cron sin usuario delante.
+6. **El momento "probalo"**: abrí el preview vos (herramientas de browser sobre `http://localhost:3000`) y presentale su agente con las dos vías, explícitas — la principal: "agarrá el celular y escribile a tu bot @<usuario_bot>: pedile *mandame la propuesta de hoy* (o *el resumen de hoy*), o preguntale lo que quieras"; la secundaria: "también podés chatear acá en el navegador". Avisale que por Telegram tarda unos segundos en contestar, que no repita el mensaje. Cerrá explicando que eso mismo que pidió a mano le va a llegar solo todos los días a la hora que eligió, cuando lo publique.
 
 # Reglas duras
 
