@@ -10,7 +10,8 @@ Solo 3 cuentas y 1 mensaje. Nada de terminal, nada técnico: Claude Code prepara
 
 - [ ] **Cuenta de Claude** con plan pago (Pro): entrá a [claude.ai](https://claude.ai), registrate y elegí el plan. Es el cerebro de todo el taller.
 - [ ] **Cuenta de GitHub** (gratis): entrá a [github.com/signup](https://github.com/signup) y creala. Ahí va a vivir tu copia del taller y lo que construyas.
-- [ ] **Telegram** en tu celular, con tu cuenta de siempre. Tu agente te va a escribir ahí.
+- [ ] **Telegram**: si no lo tenés, bajalo en el celular ([telegram.org](https://telegram.org/apps)) y creá tu cuenta con tu número. Tu agente te va a escribir ahí.
+- [ ] **Telegram también en la compu** (esto te ahorra tiempo en el taller): entrá a [web.telegram.org](https://web.telegram.org) y vinculalo. Desde el celular: **Ajustes → Dispositivos → Vincular dispositivo** y escaneá el QR que aparece en la pantalla. Dejalo abierto: vas a poder copiar y pegar en vez de tipear del celular.
 - [ ] **Cuenta de Vercel** (gratis): entrá a [vercel.com/signup](https://vercel.com/signup), tocá **Continue with GitHub** y listo. Sirve para que al final tu agente viva en internet.
 - [ ] Solo agente de agenda: usás **tu cuenta de Google de siempre** (tu calendario personal). Mandale tu Gmail al organizador cuando te inscribís, para habilitarte.
 
@@ -62,7 +63,7 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 
 **10-20 · La construcción.** El AI Engineer arma todo. Te va a pedir solo 2 o 3 cosas que únicamente vos podés hacer:
 1. Pegar la **llave del modelo** que te dio el organizador.
-2. Crear tu **bot de Telegram** hablando con @BotFather (te guía paso a paso) y mandarle "hola".
+2. Crear tu **bot de Telegram**: en Telegram Web buscás **@BotFather**, le escribís `/newbot`, elegís un nombre, y copiás el código que te da. Te guía paso a paso. Después le mandás "hola" a tu bot.
 3. Solo agenda: tocar **Permitir** cuando se abra Google en el navegador.
 
 Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISIONES.md`, en criollo.

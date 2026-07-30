@@ -47,8 +47,12 @@ CUENTAS. Creá las que no tengas:
    (es la herramienta con la que vas a crear tu agente)
 2. Cuenta gratuita de GitHub → https://github.com/signup
    (ahí va a vivir tu copia del taller y lo que construyas)
-3. Telegram en tu celular, tu cuenta de siempre
-   (tu agente te va a escribir ahí)
+3. Telegram: si no lo tenés, bajalo → https://telegram.org/apps
+   y creá tu cuenta con tu número (tu agente te va a escribir ahí).
+   IMPORTANTE: dejalo abierto también en la compu → entrá a
+   https://web.telegram.org y vinculalo desde el celular con
+   Ajustes → Dispositivos → Vincular dispositivo (escaneás el QR).
+   Con eso vas a poder copiar y pegar en vez de tipear del celular.
 4. Cuenta gratuita de Vercel → https://vercel.com/signup
    → tocá "Continue with GitHub" y ya está
    (para que tu agente viva en internet al final)

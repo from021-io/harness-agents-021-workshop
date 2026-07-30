@@ -20,7 +20,7 @@ Tres cuentas tuyas y una app. Sin terminal, sin pasos técnicos:
 
 1. **Cuenta de Claude** (plan Pro) y la app [Claude Code](https://claude.com/claude-code) instalada con sesión iniciada.
 2. **Cuenta gratuita de GitHub** (tu copia del taller vive ahí).
-3. **Telegram** en tu celular (tu cuenta de siempre: tu agente te escribe ahí).
+3. **Telegram** en tu celular, y abierto también en la compu vía [web.telegram.org](https://web.telegram.org) (tu agente te escribe ahí; tenerlo en la compu te ahorra tipear).
 4. **Cuenta gratuita de Vercel** (para que tu agente viva en internet al final).
 5. Solo agente de agenda: tu cuenta de Google de siempre (se usa TU calendario).
 
