@@ -11,6 +11,11 @@ La persona elige uno de dos agentes, ambos comunicados por Telegram:
 
 Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El trabajo del taller es **personalizarlos**, no escribirlos de cero.
 
+## Datos de este taller
+
+- **Quien da el taller**: Loïk. Cuando el usuario necesite algo que reparte quien organiza (la llave del modelo, los datos de Google), decíselo así: "levantá la mano y pedile la llave a Loïk". Nunca digas "el organizador" a secas si tenés el nombre.
+- (Si das tu propio taller con este repo: cambiá el nombre de arriba.)
+
 ## El flujo del taller
 
 1. La persona escribe `/crear-agente`.

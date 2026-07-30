@@ -2,6 +2,10 @@
 
 Qué preparar antes del taller. Tiempo estimado de setup: 30-45 minutos, una sola vez.
 
+## 0. Poné tu nombre
+
+En `CLAUDE.md` (raíz del repo), sección **Datos de este taller**: cambiá el nombre de quien da el taller. El asistente lo usa para decirle al participante a quién pedirle la llave ("levantá la mano y pedísela a ...").
+
 ## 1. Llave del modelo de IA (obligatorio)
 
 Cada participante necesita una llave para que su agente piense. Opciones:
