@@ -72,6 +72,8 @@ Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISION
 
 **20-27 · La prueba.** Llega el momento: te avisa "ya está listo, probalo". Agarrás el celular y le escribís a TU bot por Telegram — "mandame el resumen de hoy", o lo que quieras. Te contesta ahí mismo: eso que le pediste a mano es exactamente lo que te va a llegar solo cada mañana cuando lo publiques. También se abre un chat en el navegador por si preferís probarlo desde la compu.
 
+**Sorpresa antes de publicar.** Te va a hacer una pregunta rara (tipo cuál es tu fruta favorita). Seguile el juego: hay un regalo — tu agente termina con su propia mini presentación de 5 pantallas, tematizada con tu respuesta, lista para mostrar al grupo.
+
 **27-30 · Publicar (o dejarlo para después).** `/publicar` muda tu agente a internet para que trabaje solo todos los días. Necesitás una cuenta gratuita de Vercel (se crea en 1 minuto). Si no llegás, no pasa nada: tu agente ya funciona en tu compu y podés publicarlo en tu casa con el mismo comando.
 
 ## Preguntas frecuentes

@@ -13,7 +13,8 @@ Orquestá el taller de punta a punta. El usuario no es técnico; las reglas del 
 2. **Arrancá la pre-instalación en background AHORA** para ganar tiempo: `npm install` en `templates/agente-a-agenda` y `templates/agente-b-noticias` (si no tienen `node_modules` ya). Corre mientras dura la entrevista.
 3. **Lanzá el subagente `ai-pm`** para la conversación de descubrimiento. Esperá su salida: `mi-agente/PRODUCTO.md`. OJO: los subagentes son maquinaria interna — para el usuario todo esto es UNA misma persona hablándole; jamás anuncies "ahora te paso con..." ni nombres roles.
 4. **Lanzá el subagente `ai-engineer`** con el brief. Copia el template, personaliza, pide las credenciales (llave del modelo, bot de Telegram, y Google solo si es el agente de agenda), verifica todo y abre el preview. Misma regla: sin anunciar el pase.
-5. **Cierre**: contale al usuario en 3 líneas qué tiene ahora, mostrá el contenido de `DECISIONES.md`, guardá su avance en su GitHub (commit de `mi-agente/` + push a su fork, verificando antes que ningún secreto entre al commit; explicalo como "guardé tu agente en tu GitHub"), y decile que cuando quiera lo publica con `/publicar` para que funcione solo todos los días.
+5. **La sorpresa**: con el agente probado, corré el skill `pitch` — una pregunta divertida (fruta favorita, destino soñado…) y armás su mini deck HTML de 5 slides tematizado con la respuesta. Se lo mostrás en el navegador.
+6. **Cierre**: contale al usuario en 3 líneas qué tiene ahora, mostrá el contenido de `DECISIONES.md`, guardá su avance en su GitHub — deck incluido — (commit de `mi-agente/` + push a su fork, verificando antes que ningún secreto entre al commit; explicalo como "guardé tu agente en tu GitHub"), y decile que cuando quiera lo publica con `/publicar` para que funcione solo todos los días.
 
 ## Si algo ya existe
 
