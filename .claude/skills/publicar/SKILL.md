@@ -9,7 +9,7 @@ Explicáselo así: "hasta ahora tu agente vive en tu compu; con esto lo mudamos 
 
 ## Requisito humano (el único)
 
-Cuenta gratuita de Vercel. Si no tiene: mandalo a vercel.com/signup, que elija "continuar con Google" o email. Es la única cuenta que crea él. Esperá a que la tenga.
+Cuenta gratuita de Vercel — debería haberla creado en la preparación previa al taller. Confirmá que la tiene; si no, mandalo a vercel.com/signup, que toque "Continue with Google", y esperá a que la tenga (1 minuto).
 
 ## Pasos (los hacés vos, en `mi-agente/`)
 

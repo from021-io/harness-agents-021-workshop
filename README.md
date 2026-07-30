@@ -16,20 +16,20 @@ No escribís código. Un equipo de IA lo hace por vos:
 
 ## Qué necesitás antes de empezar
 
-1. Una computadora con [Node.js 24](https://nodejs.org) y [Claude Code](https://claude.com/claude-code) instalados.
-2. **Telegram** en tu celular.
-3. Una cuenta de Google (solo para el agente de agenda).
-4. Las llaves que reparte el organizador del taller.
+Tres cuentas tuyas y una app. Sin terminal, sin pasos técnicos:
+
+1. **Cuenta de Claude** (plan Pro) y la app [Claude Code](https://claude.com/claude-code) instalada con sesión iniciada.
+2. **Telegram** en tu celular (tu cuenta de siempre: tu agente te escribe ahí).
+3. **Cuenta gratuita de Vercel** (para que tu agente viva en internet al final).
+4. Solo agente de agenda: tu cuenta de Google de siempre (se usa TU calendario).
+
+La llave del modelo y los permisos de Google los reparte el organizador el día del taller.
+
+La preparación completa de tu compu la hace Claude Code solo (instala lo que falte y descarga este material): los pasos exactos y el mensaje para pegarle están en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).
 
 ## Cómo arranca el taller
 
-```bash
-git clone <tu-fork-de-este-repo>
-cd harness-agents-021
-claude
-```
-
-Y adentro de Claude Code escribís:
+Abrís Claude Code en la carpeta `taller-agentes` que quedó preparada y escribís:
 
 ```
 /crear-agente
