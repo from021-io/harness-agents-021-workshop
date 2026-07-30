@@ -20,7 +20,7 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 
 1. La persona escribe `/crear-agente`.
 2. El subagente **ai-pm** la entrevista (producto y perfil personal, nunca nada técnico) y escribe `mi-agente/PRODUCTO.md`.
-3. El subagente **ai-engineer** copia el template elegido a `mi-agente/`, lo personaliza con el brief, resuelve todo lo técnico solo, y deja el agente corriendo con preview abierto para que la persona lo pruebe.
+3. Siguiendo el playbook **ai-engineer** (en el hilo principal, sin delegar: si no, el usuario no ve la narración) se copia el template elegido a `mi-agente/`, se personaliza con el brief, se resuelve todo lo técnico solo, y queda el agente corriendo con preview abierto para que la persona lo pruebe.
 4. `/probar` levanta el agente y dispara el envío del día para verlo funcionando ya.
 5. `/publicar` lo pone a vivir en internet (Vercel) para que funcione solo todos los días.
 
