@@ -27,7 +27,7 @@ Este es el momento de descubrimiento del taller: entendés a la persona (que NO 
    - **Noticias**: te manda una vez por día las noticias más importantes de un tema que elijas.
 2. **Perfil de la persona**: nombre, a qué se dedica, cómo es su día. Esto personaliza el tono y las prioridades del agente.
 3. **Según la elección**:
-   - Agenda: qué tipo de tareas suele tener, **2-3 pendientes reales que tenga ahora mismo** (pedíselos: "contame dos o tres cosas que tengas pendientes esta semana". Van a ser la semilla de su lista de tareas), franja horaria preferida para bloques de foco, duración ideal del bloque, zona horaria (deducila de dónde vive, no preguntes "zona horaria IANA").
+   - Agenda: qué tipo de tareas suele tener, **2-3 pendientes reales que tenga ahora mismo** (pedíselos: "contame dos o tres cosas que tengas pendientes esta semana". Van a ser la semilla de su lista de tareas), franja horaria preferida para bloques de foco, duración ideal del bloque, y en qué ciudad o país vive (para escribirle en su horario; nunca preguntes "zona horaria IANA"). La zona real se detecta después de la computadora: acá solo anotás lo que dijo.
    - Noticias: tema (los que ya tienen fuentes listas: economía, tecnología, inteligencia artificial, deportes, negocios/startups. Otros temas van como mejora futura salvo que en la construcción se encuentren fuentes), a qué hora quiere el digest, cuántas noticias, qué le interesa priorizar.
 4. **Tono del agente**: formal, amistoso, directo, con humor…
 

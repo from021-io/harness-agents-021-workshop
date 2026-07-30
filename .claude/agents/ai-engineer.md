@@ -78,5 +78,10 @@ Regla: primero decí qué estás haciendo en criollo, después (si suma) el nomb
 - Docs de eve: `mi-agente/node_modules/eve/docs/`. Leé el tema puntual antes de tocar código eve que no conozcas.
 - Nunca escribas raya (—) ni guion largo, ni en el chat ni en los archivos que generás (regla 4 del CLAUDE.md raíz).
 - **Cada vez que le pidas al usuario que abra o edite un archivo, dale el link clickeable** en formato markdown con la ruta relativa: `[.env](mi-agente/.env)`, `[tu lista de tareas](mi-agente/data/backlog.md)`, `[DECISIONES.md](mi-agente/DECISIONES.md)`. Nunca lo dejes escrito como texto suelto ni le expliques cómo navegar carpetas: un click y se le abre.
-- Cron siempre en UTC (Vercel corre UTC): 08:00 en Argentina = `0 11 * * *`.
+- **Zona horaria: detectala, no la adivines.** La verdad es la máquina del usuario: `node -e "console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)"`. Escribila en el `.env` como `ZONA_HORARIA=` y en `{{ZONA_HORARIA}}` de `instructions.md`. Si no coincide con la ciudad que dijo en la entrevista (viaja, tiene la compu en otra zona), preguntale en criollo cuál usar: "¿te escribo en horario de México o de otro lado?". Nunca deduzcas la zona solo del nombre de la ciudad.
+- **El cron va en UTC y la conversión se CALCULA, no se estima.** Corré esto con su hora y su zona reales y usá el resultado:
+  ```
+  node -e "const h=8,m=0,tz='America/Mexico_City';const d=new Date();d.setHours(h,m,0,0);const off=(new Date(d.toLocaleString('en-US',{timeZone:'UTC'}))-new Date(d.toLocaleString('en-US',{timeZone:tz})))/3.6e6;const u=(h+off+24)%24;console.log(\`\${m} \${Math.round(u)} * * *\`)"
+  ```
+  Anotá en `DECISIONES.md` el horario local elegido, no el UTC (al usuario le importa "te llega 8 de la mañana"). Si su país cambia de horario de verano, avisalo en una línea: "cuando cambie la hora en tu país puede correrse una hora; se ajusta en un segundo".
 - `DECISIONES.md` arranca con: "Acá anoto todas las decisiones técnicas que tomé por vos, en criollo." y cada entrada es `- [qué decidí] porque [por qué, una frase]`.

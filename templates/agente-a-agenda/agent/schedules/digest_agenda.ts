@@ -2,8 +2,10 @@ import { defineSchedule } from "eve/schedules";
 
 import telegram from "../channels/telegram";
 
-// El horario está en UTC (en Vercel el cron corre en UTC).
-// "0 11 * * 1-5" = 11:00 UTC = 08:00 en Argentina (UTC-3), lunes a viernes.
+// El horario está en UTC (en Vercel el cron corre en UTC), así que hay que
+// convertir desde la hora local del dueño (ver ZONA_HORARIA en .env).
+// Ejemplos de las 08:00 locales: Argentina (UTC-3) = "0 11 * * 1-5",
+// México (UTC-6) = "0 14 * * 1-5", España (UTC+2 en verano) = "0 6 * * 1-5".
 export default defineSchedule({
   cron: "0 11 * * 1-5",
   async run({ receive, waitUntil, appAuth }) {
