@@ -1,0 +1,30 @@
+{
+  "economia": [
+    { "nombre": "Ámbito Financiero", "rss": "https://www.ambito.com/rss/pages/economia.xml" },
+    { "nombre": "Clarín Economía", "rss": "https://www.clarin.com/rss/economia/" },
+    { "nombre": "El Cronista", "rss": "https://www.cronista.com/files/rss/news.xml" },
+    { "nombre": "Bloomberg Línea", "rss": "https://www.bloomberglinea.com/arc/outboundfeeds/rss/?outputType=xml" },
+    { "nombre": "BBC Mundo", "rss": "https://feeds.bbci.co.uk/mundo/rss.xml" }
+  ],
+  "tecnologia": [
+    { "nombre": "Xataka", "rss": "https://www.xataka.com/feedburner.xml" },
+    { "nombre": "TechCrunch", "rss": "https://techcrunch.com/feed/" },
+    { "nombre": "The Verge", "rss": "https://www.theverge.com/rss/index.xml" }
+  ],
+  "inteligencia-artificial": [
+    { "nombre": "TechCrunch AI", "rss": "https://techcrunch.com/category/artificial-intelligence/feed/" },
+    { "nombre": "VentureBeat AI", "rss": "https://venturebeat.com/category/ai/feed/" },
+    { "nombre": "Xataka", "rss": "https://www.xataka.com/feedburner.xml" }
+  ],
+  "deportes": [
+    { "nombre": "Olé", "rss": "https://www.ole.com.ar/rss/ultimas-noticias/" },
+    { "nombre": "Clarín Deportes", "rss": "https://www.clarin.com/rss/deportes/" },
+    { "nombre": "ESPN", "rss": "https://www.espn.com/espn/rss/news" },
+    { "nombre": "Marca", "rss": "https://e00-marca.uecdn.es/rss/portada.xml" }
+  ],
+  "negocios-startups": [
+    { "nombre": "TechCrunch Startups", "rss": "https://techcrunch.com/category/startups/feed/" },
+    { "nombre": "Bloomberg Línea", "rss": "https://www.bloomberglinea.com/arc/outboundfeeds/rss/?outputType=xml" },
+    { "nombre": "Emprendedores News", "rss": "https://emprendedoresnews.com/feed" }
+  ]
+}
