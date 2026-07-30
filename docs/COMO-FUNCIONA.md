@@ -5,8 +5,9 @@
 **1. El harness de Claude Code** (`.claude/` + `CLAUDE.md`): un workflow AI PM → AI Engineer pensado para usuarios no técnicos.
 
 - `CLAUDE.md`: las reglas del juego. Las importantes: el usuario nunca responde preguntas técnicas; la V1 jamás incluye auth ni base de datos; todo en español simple; nada se muestra sin estar verificado; toda decisión técnica queda logueada en `mi-agente/DECISIONES.md`.
-- `.claude/agents/ai-pm.md`: subagente que entrevista (producto + perfil de la persona) y escribe `mi-agente/PRODUCTO.md`.
-- `.claude/agents/ai-engineer.md`: subagente que copia el template, lo personaliza con el brief, resuelve credenciales con el usuario (lo único humano: pegar la llave, hablar con @BotFather, tocar "Permitir" en Google), verifica y abre el preview.
+- `.claude/agents/ai-pm.md`: playbook de la entrevista (producto + perfil de la persona) que produce `mi-agente/PRODUCTO.md`.
+- `.claude/agents/ai-engineer.md`: playbook de construcción: copia el template, lo personaliza con el brief, resuelve credenciales con el usuario (lo único humano: pegar la llave, hablar con @BotFather, tocar "Permitir" en Google), verifica y abre el preview.
+- Los dos viven en `.claude/agents/` (formato de subagente) pero **se leen y se siguen en el hilo principal**. Delegarlos rompe la experiencia: la salida de un subagente le llega al usuario dentro de una caja "Message from ai-engineer", con las instrucciones internas a la vista y duplicada por el relato del hilo principal.
 - `.claude/skills/`: los comandos `/crear-agente`, `/probar`, `/publicar`.
 
 **2. Los templates eve** (`templates/`): dos agentes completos sobre [eve](https://eve.dev) (v0.28), cada uno un proyecto Next.js con el agente embebido vía `withEve`, lo que da chat web en `localhost:3000` y API en `/eve/v1/*`.
