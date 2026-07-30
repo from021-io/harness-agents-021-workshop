@@ -69,7 +69,10 @@ PREPARÁ TU COMPU (sin pasos técnicos):
       carpeta personal.
    4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
    5. Verificá que todo haya quedado bien y terminá diciéndome
-      "✅ Listo para el taller" con la ubicación de la carpeta.
+      "✅ Listo para el taller" con la ubicación de la carpeta y el
+      recordatorio de que el día del taller tengo que abrir una
+      conversación NUEVA de Claude Code parada en esa carpeta (no
+      esta misma) y escribir /crear-agente.
 
 8. Esperá el "✅ Listo para el taller" (tarda unos minutos).
    Lo único que hacés en el medio: tocar "Autorizar" cuando se abra
