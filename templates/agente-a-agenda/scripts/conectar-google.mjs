@@ -66,6 +66,24 @@ const server = createServer(async (req, res) => {
 
   const code = url.searchParams.get("code");
   const stateRecibido = url.searchParams.get("state");
+  const errorGoogle = url.searchParams.get("error");
+
+  if (errorGoogle === "access_denied") {
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.end(
+      "<div style='font-family:sans-serif;text-align:center;margin-top:80px'>" +
+        "<h1>🔒 Google todavía no habilitó tu cuenta</h1>" +
+        "<p>La app del taller está en modo prueba. Pedile a quien da el taller que agregue tu correo (o que publique la app) y probamos de nuevo.</p></div>",
+    );
+    console.error(
+      "\n🔒 Google bloqueó el acceso (access_denied).\n" +
+        "   Tu cuenta no está habilitada en la app del taller.\n" +
+        "   Pedile a quien da el taller que agregue tu correo como usuario de prueba,\n" +
+        "   o que publique la app. Después volvé a correr: npm run conectar-google\n",
+    );
+    server.close();
+    process.exit(2);
+  }
 
   if (!code || stateRecibido !== state) {
     res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" });
@@ -107,7 +125,9 @@ const server = createServer(async (req, res) => {
 
 server.listen(PUERTO, () => {
   console.log("\n➡️  Se va a abrir el navegador para que autorices el acceso a tu Google Calendar.");
-  console.log("   Elegí tu cuenta y tocá «Permitir».\n");
+  console.log("   Elegí tu cuenta y tocá «Permitir».");
+  console.log("   Si aparece «Google no verificó esta app»: tocá «Configuración avanzada» y después «Ir a ... (no seguro)».");
+  console.log("   Es la app del taller.\n");
   console.log(`   Si no se abre solo, entrá acá: ${authUrl.toString()}\n`);
   const abrir = process.platform === "darwin" ? "open" : process.platform === "win32" ? "start" : "xdg-open";
   exec(`${abrir} "${authUrl.toString()}"`);

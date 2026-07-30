@@ -29,9 +29,16 @@ Los participantes del agente de agenda autorizan su calendario con 1 click contr
 4. **Credenciales → Crear credenciales → ID de cliente OAuth** → tipo **Aplicación web** → en "URIs de redireccionamiento autorizados" agregá exactamente: `http://localhost:8756/callback`
 5. Guardá el **Client ID** y el **Client Secret**: son los `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` que repartís.
 
-**Importante: modo de publicación de la app:**
-- En modo **Prueba** (default): tenés que agregar el mail de Google de cada participante en "Usuarios de prueba" (máximo 100). Pedí los mails al inscribirse.
-- Alternativa: publicá la app ("En producción") sin verificación de Google: los participantes ven una pantalla de advertencia ("app no verificada") y pueden continuar por "Configuración avanzada". Menos prolijo, cero carga de mails.
+**⚠️ Modo de publicación: el error más común del taller.** Si la app queda en modo **Prueba** (el default), todo participante cuyo mail no esté cargado ve esto y no puede seguir:
+
+> Error 403: access_denied. En este momento, la app se está probando y solo los verificadores aprobados por los desarrolladores pueden acceder a ella.
+
+Dos caminos, elegí uno ANTES del taller:
+
+- ✅ **Recomendado: publicá la app.** Pantalla de consentimiento OAuth → botón **PUBLICAR APLICACIÓN** (estado "En producción"). Entra cualquier cuenta de Google sin que cargues un solo mail. Como no está verificada por Google, van a ver "Google no verificó esta app": tocan **Configuración avanzada → Ir a ... (no seguro)** y siguen. Avisalo en la intro para que nadie se asuste.
+- **Alternativa: modo Prueba con lista.** Pantalla de consentimiento → **Usuarios de prueba** → **Add users** → cargás el Gmail de cada participante (máximo 100). Más prolijo visualmente, pero tenés que pedir todos los mails al inscribirse y cargar a los que lleguen sobre la hora.
+
+En cualquiera de los dos, si alguien igual queda afuera: agregás su mail en Usuarios de prueba y vuelve a intentar. El asistente ya sabe explicarle que levante la mano y siga con el resto del taller mientras tanto.
 
 ## 3. Checklist para mandar a los participantes (antes del taller)
 
