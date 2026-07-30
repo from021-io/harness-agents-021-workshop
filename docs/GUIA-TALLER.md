@@ -9,32 +9,39 @@ Solo 3 cuentas y 1 mensaje. Nada de terminal, nada técnico: Claude Code prepara
 **Cuentas (creá las que te falten):**
 
 - [ ] **Cuenta de Claude** con plan pago (Pro): entrá a [claude.ai](https://claude.ai), registrate y elegí el plan. Es el cerebro de todo el taller.
+- [ ] **Cuenta de GitHub** (gratis): entrá a [github.com/signup](https://github.com/signup) y creala. Ahí va a vivir tu copia del taller y lo que construyas.
 - [ ] **Telegram** en tu celular, con tu cuenta de siempre. Tu agente te va a escribir ahí.
-- [ ] **Cuenta de Vercel** (gratis): entrá a [vercel.com/signup](https://vercel.com/signup), tocá **Continue with Google** y listo. Sirve para que al final tu agente viva en internet.
+- [ ] **Cuenta de Vercel** (gratis): entrá a [vercel.com/signup](https://vercel.com/signup), tocá **Continue with GitHub** y listo. Sirve para que al final tu agente viva en internet.
 - [ ] Solo agente de agenda: usás **tu cuenta de Google de siempre** (tu calendario personal). Mandale tu Gmail al organizador cuando te inscribís, para habilitarte.
 
 **Instalá Claude Code y dejá que prepare todo:**
 
 - [ ] Descargá la app de Claude Code desde [claude.com/claude-code](https://claude.com/claude-code), abrila e iniciá sesión con tu cuenta de Claude.
-- [ ] Copiá y pegá este mensaje en Claude Code, tal cual (el organizador te pasa el link del repo si acá no está completo):
+- [ ] Copiá y pegá este mensaje en Claude Code, tal cual:
 
 ```
 Preparame la computadora para el taller de agentes. Hacé todo vos, no me
 hagas ninguna pregunta técnica y resolvé lo que falte:
-1. Fijate si están instalados Git y Node.js versión 24 o más nueva.
-   Si falta alguno, instalalo vos.
-2. Descargá el material del taller desde <URL-DEL-REPO> a una carpeta
-   "taller-agentes" en mi carpeta personal.
-3. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-4. Verificá que todo haya quedado bien y terminá diciéndome
+1. Fijate si están instalados Git, Node.js versión 24 o más nueva, y la
+   herramienta de GitHub (gh). Si falta algo, instalalo vos.
+2. Conectá mi cuenta de GitHub (gh auth login): avisame cuándo tocar
+   "Autorizar" en el navegador.
+3. Hacé un fork a mi cuenta del repo
+   https://github.com/from021-io/harness-agents-021-workshop
+   y descargá mi copia a una carpeta "taller-agentes" en mi carpeta
+   personal.
+4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
+5. Verificá que todo haya quedado bien y terminá diciéndome
    "✅ Listo para el taller" con la ubicación de la carpeta.
 ```
+
+Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
 
 - [ ] Esperá el "✅ Listo para el taller". Puede tardar unos minutos (descarga cosas pesadas). Si algo falla, Claude lo intenta arreglar solo; si se traba, mandale la pantalla al organizador.
 
 **Qué es de quién** (para que no haya sorpresas):
 
-- **Tuyo**: tu Telegram, tu calendario de Google, tu cuenta de Claude y tu cuenta de Vercel. Tu agente trabaja con TUS cosas.
+- **Tuyo**: tu Telegram, tu calendario de Google, tu cuenta de Claude, tu GitHub (con tu copia del taller) y tu cuenta de Vercel. Tu agente trabaja con TUS cosas y tu trabajo se guarda en TU GitHub.
 - **Del organizador**: la "llave del modelo" (lo que le da inteligencia al agente) y los permisos de Google del taller. Te los dan el día del evento, no necesitás nada de eso antes.
 
 ## Minuto a minuto

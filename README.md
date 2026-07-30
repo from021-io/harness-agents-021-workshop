@@ -19,9 +19,10 @@ No escribís código. Un equipo de IA lo hace por vos:
 Tres cuentas tuyas y una app. Sin terminal, sin pasos técnicos:
 
 1. **Cuenta de Claude** (plan Pro) y la app [Claude Code](https://claude.com/claude-code) instalada con sesión iniciada.
-2. **Telegram** en tu celular (tu cuenta de siempre: tu agente te escribe ahí).
-3. **Cuenta gratuita de Vercel** (para que tu agente viva en internet al final).
-4. Solo agente de agenda: tu cuenta de Google de siempre (se usa TU calendario).
+2. **Cuenta gratuita de GitHub** (tu copia del taller vive ahí).
+3. **Telegram** en tu celular (tu cuenta de siempre: tu agente te escribe ahí).
+4. **Cuenta gratuita de Vercel** (para que tu agente viva en internet al final).
+5. Solo agente de agenda: tu cuenta de Google de siempre (se usa TU calendario).
 
 La llave del modelo y los permisos de Google los reparte el organizador el día del taller.
 

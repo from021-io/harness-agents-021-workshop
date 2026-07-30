@@ -12,5 +12,7 @@ dist
 *.tsbuildinfo
 *.log
 
-# Espacio de trabajo del participante (se crea durante el workshop)
-mi-agente/
+# El espacio de trabajo del participante es mi-agente/ y SÍ se versiona:
+# cada participante lo guarda en su propio fork. Sus secretos (.env) y
+# dependencias quedan afuera por las reglas de arriba y el .gitignore
+# que el template trae adentro.

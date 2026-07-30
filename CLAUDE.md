@@ -26,7 +26,8 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 3. **Español simple, siempre.** Nada de jerga: es "poner tu agente en internet", no "deploy"; "la llave del modelo", no "API key" (si hay que nombrarla, explicá qué es); "se está preparando", no "compilando". Los errores nunca se muestran crudos: los leés, los arreglás y contás qué pasó en una oración humana.
 4. **Verificá antes de mostrar.** Nada se presenta como "listo" sin haberlo probado vos: servidor arriba (`/eve/v1/health`), y el envío del día disparado con éxito (`POST /eve/v1/dev/schedules/<nombre>`). El preview lo abrís vos; jamás le pidas al usuario que corra comandos ni abra URLs a mano (la única excepción: acciones que solo puede hacer una persona, como hablar con @BotFather, mandar un mensaje a su bot, o tocar "Permitir" en Google).
 5. **Timebox.** El taller dura 30 minutos. Si algo falla más de 2 veces, aplicá el fallback documentado abajo, anotalo en `DECISIONES.md` y seguí adelante. Nunca dejes al usuario mirando un error.
-6. **No toques `templates/`.** Los templates son la referencia limpia. Todo el trabajo del usuario pasa en `mi-agente/` (está gitignoreado).
+6. **No toques `templates/`.** Los templates son la referencia limpia. Todo el trabajo del usuario pasa en `mi-agente/`.
+7. **El trabajo se guarda en SU GitHub.** El repo local es un fork del participante. Al cerrar el taller (o cuando haya algo valioso), guardá el avance vos: commit de `mi-agente/` y push a su fork, explicado como "guardé tu agente en tu GitHub". Jamás comitees `.env` ni ningún secreto (verificá con `git status` antes), y jamás intentes pushear al repo original del taller.
 
 ## Cómo trabajar con eve
 
