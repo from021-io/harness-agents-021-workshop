@@ -22,8 +22,9 @@ Solo 3 cuentas y 1 mensaje. Nada de terminal, nada técnico: Claude Code prepara
 ```
 Preparame la computadora para el taller de agentes. Hacé todo vos, no me
 hagas ninguna pregunta técnica y resolvé lo que falte:
-1. Fijate si están instalados Git, Node.js versión 24 o más nueva, y la
-   herramienta de GitHub (gh). Si falta algo, instalalo vos.
+1. Fijate si están instalados Git, Node.js versión 24 o más nueva, la
+   herramienta de GitHub (gh) y el comando de terminal "claude" (Claude
+   Code). Si falta algo, instalalo vos.
 2. Conectá mi cuenta de GitHub (gh auth login): avisame cuándo tocar
    "Autorizar" en el navegador.
 3. Hacé un fork a mi cuenta del repo
@@ -31,11 +32,14 @@ hagas ninguna pregunta técnica y resolvé lo que falte:
    y descargá mi copia a una carpeta "taller-agentes" en mi carpeta
    personal.
 4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-5. Verificá que todo haya quedado bien y terminá diciéndome
-   "✅ Listo para el taller" con la ubicación de la carpeta y el
-   recordatorio de que el día del taller tengo que abrir una
-   conversación NUEVA de Claude Code parada en esa carpeta (no esta
-   misma) y escribir /crear-agente.
+5. Dejame en el Escritorio un acceso directo llamado "Taller-Agentes"
+   que al hacerle doble click abra una terminal parada en esa carpeta
+   con el comando claude ya corriendo (en Mac un archivo .command
+   ejecutable; en Windows un .bat). Probá que el archivo quedó bien.
+6. Verificá que todo haya quedado bien y terminá diciéndome
+   "✅ Listo para el taller", la ubicación de la carpeta, y esta
+   instrucción: el día del taller hago doble click en Taller-Agentes
+   (en el Escritorio) y escribo /crear-agente.
 ```
 
 Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
@@ -53,12 +57,9 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 
 ## Minuto a minuto
 
-**0-3 · Arranque.** Abrí una conversación **nueva** de Claude Code **parada en la carpeta `taller-agentes`** — esto es clave: los comandos del taller viven ahí adentro.
+**0-3 · Arranque.** Doble click en **Taller-Agentes** (el acceso directo que quedó en tu Escritorio en la preparación): se abre una ventana con Claude Code ya parado en la carpeta correcta. Escribí `/crear-agente`.
 
-- En la app: sesión nueva y elegí la carpeta `taller-agentes` como carpeta de trabajo.
-- En la terminal: `cd ~/taller-agentes` y después `claude`.
-
-Escribí `/crear-agente`. ¿Te dice "Unknown command"? Es que la conversación no está parada en la carpeta — cerrala y volvé a abrir eligiendo `taller-agentes`. (También podés escribir "quiero crear mi agente", hace lo mismo.) Acordate: si pide permiso, **Allow / Always allow**.
+¿No tenés el acceso directo o dice "Unknown command"? Plan B: abrí una conversación nueva de Claude Code eligiendo la carpeta `taller-agentes` como carpeta de trabajo (en la app), o en la terminal: `cd ~/taller-agentes` y después `claude`. También podés escribir "quiero crear mi agente", hace lo mismo. Acordate: si pide permiso, **Allow / Always allow**.
 
 **3-10 · La entrevista.** El AI PM te pregunta qué agente querés (agenda o noticias), quién sos y tus preferencias. Respondé como en una charla; acá se define tu agente.
 

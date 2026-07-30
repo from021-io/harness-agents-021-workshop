@@ -60,7 +60,8 @@ PREPARÁ TU COMPU (sin pasos técnicos):
    Preparame la computadora para el taller de agentes. Hacé todo vos,
    no me hagas ninguna pregunta técnica y resolvé lo que falte:
    1. Fijate si están instalados Git, Node.js versión 24 o más nueva,
-      y la herramienta de GitHub (gh). Si falta algo, instalalo vos.
+      la herramienta de GitHub (gh) y el comando de terminal "claude"
+      (Claude Code). Si falta algo, instalalo vos.
    2. Conectá mi cuenta de GitHub (gh auth login): avisame cuándo
       tocar "Autorizar" en el navegador.
    3. Hacé un fork a mi cuenta del repo
@@ -68,11 +69,15 @@ PREPARÁ TU COMPU (sin pasos técnicos):
       y descargá mi copia a una carpeta "taller-agentes" en mi
       carpeta personal.
    4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-   5. Verificá que todo haya quedado bien y terminá diciéndome
-      "✅ Listo para el taller" con la ubicación de la carpeta y el
-      recordatorio de que el día del taller tengo que abrir una
-      conversación NUEVA de Claude Code parada en esa carpeta (no
-      esta misma) y escribir /crear-agente.
+   5. Dejame en el Escritorio un acceso directo llamado
+      "Taller-Agentes" que al hacerle doble click abra una terminal
+      parada en esa carpeta con el comando claude ya corriendo (en
+      Mac un archivo .command ejecutable; en Windows un .bat). Probá
+      que el archivo quedó bien.
+   6. Verificá que todo haya quedado bien y terminá diciéndome
+      "✅ Listo para el taller", la ubicación de la carpeta, y esta
+      instrucción: el día del taller hago doble click en
+      Taller-Agentes (en el Escritorio) y escribo /crear-agente.
 
 8. Esperá el "✅ Listo para el taller" (tarda unos minutos).
    Lo único que hacés en el medio: tocar "Autorizar" cuando se abra
