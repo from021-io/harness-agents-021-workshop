@@ -38,6 +38,8 @@ hagas ninguna pregunta técnica y resolvé lo que falte:
 Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
 
 > 💡 **Regla de oro con Claude Code**: cada vez que te pida permiso para hacer algo ("Allow?" / "¿Permitir?"), elegí **Allow** — y si te da la opción, **Always allow** (permitir siempre), así no te vuelve a preguntar. Vale para toda la preparación y todo el taller.
+>
+> Mejor todavía: abajo del cuadro donde escribís hay un selector de permisos — elegí **Bypass permissions** y Claude no te interrumpe más con pedidos de permiso durante el taller.
 
 - [ ] Esperá el "✅ Listo para el taller". Puede tardar unos minutos (descarga cosas pesadas). Si algo falla, Claude lo intenta arreglar solo; si se traba, mandale la pantalla al organizador.
 
