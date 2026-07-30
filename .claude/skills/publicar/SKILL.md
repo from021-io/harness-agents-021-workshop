@@ -3,18 +3,18 @@ name: publicar
 description: Pone el agente del usuario a vivir en internet (Vercel) para que funcione solo todos los días, y deja el bot de Telegram respondiendo. Usar cuando el usuario escribe /publicar o pide publicar/activar su agente.
 ---
 
-# /publicar — poner el agente en internet
+# /publicar: poner el agente en internet
 
 Explicáselo así: "hasta ahora tu agente vive en tu compu; con esto lo mudamos a internet para que trabaje solo todos los días, aunque tu compu esté apagada". Reglas del CLAUDE.md raíz aplican: cero jerga, errores los resolvés vos.
 
 ## Requisito humano (el único)
 
-Cuenta gratuita de Vercel — debería haberla creado en la preparación previa al taller. Confirmá que la tiene; si no, mandalo a vercel.com/signup, que toque "Continue with Google", y esperá a que la tenga (1 minuto).
+Cuenta gratuita de Vercel: debería haberla creado en la preparación previa al taller. Confirmá que la tiene; si no, mandalo a vercel.com/signup, que toque "Continue with Google", y esperá a que la tenga (1 minuto).
 
 ## Pasos (los hacés vos, en `mi-agente/`)
 
 1. `npm run typecheck` y verificación local rápida antes de publicar. Si algo se rompió, arreglalo primero.
-2. `npx vercel login` — se abre el navegador, el usuario toca confirmar. Explicale solo eso.
+2. `npx vercel login`: se abre el navegador, el usuario toca confirmar. Explicale solo eso.
 3. `npx vercel link --yes` para vincular el proyecto (aceptá defaults, nombre = su agente).
 4. Subí las variables del `.env` al proyecto con `npx vercel env add <NOMBRE> production` para cada una (leé los valores del `.env` local, no se los pidas de nuevo, no los muestres).
 5. Deploy a producción: `npx vercel --prod`. Guardá la URL final.

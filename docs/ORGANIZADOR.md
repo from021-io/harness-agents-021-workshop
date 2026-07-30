@@ -13,7 +13,7 @@ Cada participante necesita una llave para que su agente piense. Opciones:
 **Recomendado: Vercel AI Gateway.**
 1. Creá una cuenta/equipo en [vercel.com](https://vercel.com) → AI Gateway.
 2. Generá una API key (`AI_GATEWAY_API_KEY`) por participante, o una compartida para todo el taller.
-3. Poné un límite de gasto (Budgets) — para un taller de 20 personas, USD 10-20 alcanza de sobra.
+3. Poné un límite de gasto (Budgets). Para un taller de 20 personas, USD 10-20 alcanza de sobra.
 
 Alternativa: repartir `ANTHROPIC_API_KEY` de [console.anthropic.com](https://console.anthropic.com). En ese caso el AI Engineer adapta la configuración del modelo solo (los templates usan el Gateway por defecto).
 
@@ -29,7 +29,7 @@ Los participantes del agente de agenda autorizan su calendario con 1 click contr
 4. **Credenciales → Crear credenciales → ID de cliente OAuth** → tipo **Aplicación web** → en "URIs de redireccionamiento autorizados" agregá exactamente: `http://localhost:8756/callback`
 5. Guardá el **Client ID** y el **Client Secret**: son los `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` que repartís.
 
-**Importante — modo de publicación de la app:**
+**Importante: modo de publicación de la app:**
 - En modo **Prueba** (default): tenés que agregar el mail de Google de cada participante en "Usuarios de prueba" (máximo 100). Pedí los mails al inscribirse.
 - Alternativa: publicá la app ("En producción") sin verificación de Google: los participantes ven una pantalla de advertencia ("app no verificada") y pueden continuar por "Configuración avanzada". Menos prolijo, cero carga de mails.
 
@@ -42,7 +42,7 @@ Texto listo para copiar y mandar:
 ```
 ¡Hola! Para venir con todo listo al taller (15 minutos, una sola vez):
 
-CUENTAS — creá las que no tengas:
+CUENTAS. Creá las que no tengas:
 1. Cuenta de Claude con plan Pro → https://claude.ai
    (es la herramienta con la que vas a crear tu agente)
 2. Cuenta gratuita de GitHub → https://github.com/signup
@@ -53,7 +53,7 @@ CUENTAS — creá las que no tengas:
    → tocá "Continue with GitHub" y ya está
    (para que tu agente viva en internet al final)
 5. Solo si elegís el agente de agenda: respondé este mensaje con tu
-   mail de Google (Gmail) — usamos TU calendario de siempre y
+   mail de Google (Gmail): usamos TU calendario de siempre y
    necesitamos habilitarte
 
 PREPARÁ TU COMPU (sin pasos técnicos):

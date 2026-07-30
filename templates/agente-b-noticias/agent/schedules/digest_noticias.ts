@@ -9,7 +9,7 @@ export default defineSchedule({
   async run({ receive, waitUntil, appAuth }) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
     if (!chatId) {
-      console.warn("[digest_noticias] Falta TELEGRAM_CHAT_ID en .env — no se envía el digest.");
+      console.warn("[digest_noticias] Falta TELEGRAM_CHAT_ID en .env, no se envía el digest.");
       return;
     }
 

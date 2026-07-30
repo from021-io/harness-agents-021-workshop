@@ -9,7 +9,7 @@
 - `.claude/agents/ai-engineer.md`: subagente que copia el template, lo personaliza con el brief, resuelve credenciales con el usuario (lo único humano: pegar la llave, hablar con @BotFather, tocar "Permitir" en Google), verifica y abre el preview.
 - `.claude/skills/`: los comandos `/crear-agente`, `/probar`, `/publicar`.
 
-**2. Los templates eve** (`templates/`): dos agentes completos sobre [eve](https://eve.dev) (v0.28), cada uno un proyecto Next.js con el agente embebido vía `withEve` — eso da chat web en `localhost:3000` y API en `/eve/v1/*`.
+**2. Los templates eve** (`templates/`): dos agentes completos sobre [eve](https://eve.dev) (v0.28), cada uno un proyecto Next.js con el agente embebido vía `withEve`, lo que da chat web en `localhost:3000` y API en `/eve/v1/*`.
 
 ## Anatomía de un template
 
@@ -32,7 +32,7 @@ scripts/                # onboarding no técnico:
 
 Decisiones de diseño relevantes:
 
-- **Telegram funciona completo en local**: lo saliente (el digest al celular) es una llamada directa a la API de Bot, y lo entrante (que el bot conteste) lo resuelve `scripts/telegram-local.mjs` — un puente que hace long-polling a `getUpdates` y reenvía cada update como POST al endpoint local del canal (`/eve/v1/telegram`, con el secret header). Al publicar, el webhook real reemplaza al puente.
+- **Telegram funciona completo en local**: lo saliente (el digest al celular) es una llamada directa a la API de Bot, y lo entrante (que el bot conteste) lo resuelve `scripts/telegram-local.mjs`, un puente que hace long-polling a `getUpdates` y reenvía cada update como POST al endpoint local del canal (`/eve/v1/telegram`, con el secret header). Al publicar, el webhook real reemplaza al puente.
 - **Google Calendar sin integración oficial de eve**: se resuelve con tools propias contra la REST API v3, con refresh token obtenido una vez por el script de onboarding y client compartido del organizador.
 - **Los schedules no corren solos en dev** (comportamiento de eve): por eso `/probar` los dispara a mano por el endpoint de dev. Al publicar en Vercel se convierten en Vercel Cron (en UTC).
 - **La documentación de eve viaja con el paquete** (`node_modules/eve/docs/`): el AI Engineer la lee antes de tocar código eve, así el harness no depende de docs online ni se desactualiza con la versión instalada.

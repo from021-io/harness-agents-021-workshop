@@ -3,7 +3,7 @@ name: pitch
 description: Genera el mini deck de presentación (HTML, máx 5 slides) del agente que el usuario construyó, tematizado con un dato personal sorpresa (su fruta favorita, destino soñado, etc.). Usar en el cierre de /crear-agente antes de /publicar, o cuando el usuario pida su deck/presentación/pitch.
 ---
 
-# /pitch — el deck sorpresa del agente
+# /pitch: el deck sorpresa del agente
 
 Regalo de cierre del taller: una mini presentación del agente que la persona acaba de crear, para mostrarla en el evento o compartirla. Reglas del CLAUDE.md raíz aplican (una sola voz, español simple, cero preguntas técnicas).
 
@@ -19,7 +19,7 @@ Regalo de cierre del taller: una mini presentación del agente que la persona ac
      3. Qué hace: las 2-3 capacidades reales, en beneficios ("te propone el mejor hueco del día", no "usa la API de Calendar").
      4. Cómo funciona, simple: le hablás por Telegram · trabaja solo todos los días a las [hora] · decide con IA usando tus [tareas/fuentes].
      5. Lo que viene: publicarlo hoy + las mejoras futuras del brief.
-3. **Mostralo**: abrilo vos en el navegador (herramientas de browser, `file://` o servido) y contale la sorpresa: "tu agente ya tiene su propia presentación — pasá los slides con las flechas". Es SU deck para mostrar al grupo.
+3. **Mostralo**: abrilo vos en el navegador (herramientas de browser, `file://` o servido) y contale la sorpresa: "tu agente ya tiene su propia presentación, pasá los slides con las flechas". Es SU deck para mostrar al grupo.
 4. **Guardalo**: el deck entra en el commit/push a su GitHub junto con el resto (regla 8 del CLAUDE.md).
 
 ## Cuándo corre

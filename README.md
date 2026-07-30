@@ -1,6 +1,6 @@
 # harness-agents-021 · Creá tu agente de IA en 30 minutos
 
-Este repositorio es el material de un **taller hands-on**: cualquier persona —sin saber programar— sale con su propio agente de IA funcionando y comunicándose con ella por Telegram.
+Este repositorio es el material de un **taller hands-on**: cualquier persona, sin saber programar, sale con su propio agente de IA funcionando y comunicándose con ella por Telegram.
 
 No escribís código. Un equipo de IA lo hace por vos:
 
@@ -53,5 +53,5 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 - `.claude/` tiene el equipo de IA (PM + Engineer) y los comandos del taller.
 - Más detalle en [docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md).
 
-**¿Organizás un taller?** Leé [docs/ORGANIZADOR.md](docs/ORGANIZADOR.md) — hay que preparar un par de llaves antes.
+**¿Organizás un taller?** Leé [docs/ORGANIZADOR.md](docs/ORGANIZADOR.md): hay que preparar un par de llaves antes.
 **¿Participás de uno?** Tu guion está en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).
