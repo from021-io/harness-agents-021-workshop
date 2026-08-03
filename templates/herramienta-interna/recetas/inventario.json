@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "herramienta": {
+    "nombre": "Stock",
+    "queResuelve": "Saber qué hay, qué se está por acabar y qué hay que reponer.",
+    "emoji": "📊"
+  },
+  "registro": { "singular": "Producto", "plural": "Productos", "campoTitulo": "producto" },
+  "campos": [
+    { "id": "producto", "etiqueta": "Producto", "tipo": "texto", "requerido": true, "enTarjeta": true },
+    { "id": "codigo", "etiqueta": "Código", "tipo": "texto" },
+    { "id": "cantidad", "etiqueta": "Cantidad", "tipo": "numero", "enTarjeta": true },
+    { "id": "minimo", "etiqueta": "Mínimo deseado", "tipo": "numero" },
+    { "id": "costo", "etiqueta": "Costo unitario", "tipo": "moneda" },
+    { "id": "proveedor", "etiqueta": "Proveedor", "tipo": "texto", "enTarjeta": true },
+    { "id": "ultimaCompra", "etiqueta": "Última compra", "tipo": "fecha" },
+    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+  ],
+  "calculados": [
+    {
+      "id": "margenStock",
+      "etiqueta": "Sobre el mínimo",
+      "formula": "restar",
+      "argumentos": ["cantidad", "minimo"]
+    },
+    {
+      "id": "valorStock",
+      "etiqueta": "Valor en stock",
+      "formula": "multiplicar",
+      "argumentos": ["cantidad", "costo"]
+    }
+  ],
+  "estados": {
+    "etiqueta": "Situación",
+    "valores": ["Con stock", "Por reponer", "Pedido al proveedor", "Sin stock"]
+  },
+  "indicadores": [
+    { "etiqueta": "Por reponer", "tipo": "cantidad", "estado": "Por reponer" },
+    { "etiqueta": "Sin stock", "tipo": "cantidad", "estado": "Sin stock" },
+    { "etiqueta": "Productos", "tipo": "cantidad" }
+  ],
+  "vistas": { "inicial": "lista" },
+  "accionesIA": [
+    {
+      "id": "que_repongo",
+      "etiqueta": "¿Qué tengo que reponer?",
+      "alcance": "tablero",
+      "prompt": "Decime qué productos están por debajo del mínimo o sin stock, agrupados por proveedor para hacer un pedido por cada uno."
+    },
+    {
+      "id": "plata_parada",
+      "etiqueta": "¿Dónde está la plata?",
+      "alcance": "tablero",
+      "prompt": "Decime qué productos concentran más valor en stock y si hay alguno con mucha cantidad parada."
+    },
+    {
+      "id": "pedido_proveedor",
+      "etiqueta": "Escribí el pedido",
+      "alcance": "ficha",
+      "prompt": "Escribí un mensaje corto al proveedor pidiendo reposición de este producto, con la cantidad que haría falta para volver al mínimo."
+    }
+  ],
+  "semilla": [
+    {
+      "producto": "Yerba mate 1 kg",
+      "codigo": "YM-1000",
+      "cantidad": 4,
+      "minimo": 12,
+      "costo": 3800,
+      "proveedor": "Distribuidora Norte",
+      "ultimaCompra": "2026-07-12",
+      "notas": "Se vende rápido a fin de mes.",
+      "estado": "Por reponer"
+    },
+    {
+      "producto": "Aceite de girasol 1.5 L",
+      "codigo": "AC-1500",
+      "cantidad": 24,
+      "minimo": 10,
+      "costo": 2900,
+      "proveedor": "Mayorista Sur",
+      "ultimaCompra": "2026-07-28",
+      "notas": "",
+      "estado": "Con stock"
+    },
+    {
+      "producto": "Fideos guiseros 500 g",
+      "codigo": "FD-500",
+      "cantidad": 0,
+      "minimo": 20,
+      "costo": 1100,
+      "proveedor": "Distribuidora Norte",
+      "ultimaCompra": "2026-06-30",
+      "notas": "Se acabó el fin de semana.",
+      "estado": "Sin stock"
+    },
+    {
+      "producto": "Arroz largo fino 1 kg",
+      "codigo": "AR-1000",
+      "cantidad": 18,
+      "minimo": 15,
+      "costo": 1600,
+      "proveedor": "Mayorista Sur",
+      "ultimaCompra": "2026-07-25",
+      "notas": "",
+      "estado": "Con stock"
+    },
+    {
+      "producto": "Azúcar 1 kg",
+      "codigo": "AZ-1000",
+      "cantidad": 6,
+      "minimo": 15,
+      "costo": 1450,
+      "proveedor": "Distribuidora Norte",
+      "ultimaCompra": "2026-07-20",
+      "notas": "Ya se pidió, llega el jueves.",
+      "estado": "Pedido al proveedor"
+    },
+    {
+      "producto": "Papel higiénico x 4",
+      "codigo": "PH-004",
+      "cantidad": 30,
+      "minimo": 12,
+      "costo": 2400,
+      "proveedor": "Limpieza Total",
+      "ultimaCompra": "2026-07-29",
+      "notas": "Compramos de más por promo.",
+      "estado": "Con stock"
+    },
+    {
+      "producto": "Detergente 750 ml",
+      "codigo": "DT-750",
+      "cantidad": 3,
+      "minimo": 10,
+      "costo": 1900,
+      "proveedor": "Limpieza Total",
+      "ultimaCompra": "2026-07-05",
+      "notas": "",
+      "estado": "Por reponer"
+    },
+    {
+      "producto": "Café molido 500 g",
+      "codigo": "CF-500",
+      "cantidad": 9,
+      "minimo": 8,
+      "costo": 6200,
+      "proveedor": "Café del Litoral",
+      "ultimaCompra": "2026-08-01",
+      "notas": "Producto caro, no acumular.",
+      "estado": "Con stock"
+    }
+  ]
+}

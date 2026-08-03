@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "herramienta": {
+    "nombre": "Pedidos de soporte",
+    "queResuelve": "Que ningún reclamo se pierda y saber qué hay que resolver primero.",
+    "emoji": "🎧"
+  },
+  "registro": { "singular": "Caso", "plural": "Casos", "campoTitulo": "asunto" },
+  "campos": [
+    { "id": "asunto", "etiqueta": "Asunto", "tipo": "texto", "requerido": true, "enTarjeta": true },
+    { "id": "quien", "etiqueta": "Quién lo pidió", "tipo": "texto", "enTarjeta": true },
+    { "id": "email", "etiqueta": "Email", "tipo": "email" },
+    {
+      "id": "prioridad",
+      "etiqueta": "Prioridad",
+      "tipo": "opcion",
+      "opciones": ["Alta", "Media", "Baja"],
+      "enTarjeta": true
+    },
+    {
+      "id": "canal",
+      "etiqueta": "Por dónde llegó",
+      "tipo": "opcion",
+      "opciones": ["Mail", "WhatsApp", "Teléfono", "Presencial"]
+    },
+    { "id": "abierto", "etiqueta": "Fecha del reclamo", "tipo": "fecha" },
+    { "id": "detalle", "etiqueta": "Qué pasó", "tipo": "nota" }
+  ],
+  "calculados": [
+    {
+      "id": "antiguedad",
+      "etiqueta": "Abierto hace",
+      "formula": "dias_desde",
+      "argumentos": ["abierto"],
+      "sufijo": " días"
+    }
+  ],
+  "subLista": {
+    "id": "respuestas",
+    "singular": "Respuesta",
+    "plural": "Respuestas",
+    "campos": [
+      { "id": "fecha", "etiqueta": "Fecha", "tipo": "fecha", "requerido": true },
+      { "id": "quien", "etiqueta": "Quién respondió", "tipo": "texto" },
+      { "id": "detalle", "etiqueta": "Qué se respondió", "tipo": "nota", "requerido": true }
+    ]
+  },
+  "estados": {
+    "etiqueta": "Estado",
+    "valores": ["Nuevo", "En análisis", "Esperando al cliente", "Resuelto"]
+  },
+  "indicadores": [
+    { "etiqueta": "Sin abrir", "tipo": "cantidad", "estado": "Nuevo" },
+    { "etiqueta": "En análisis", "tipo": "cantidad", "estado": "En análisis" },
+    { "etiqueta": "Total abiertos", "tipo": "cantidad" }
+  ],
+  "vistas": { "inicial": "tablero" },
+  "accionesIA": [
+    {
+      "id": "que_resuelvo",
+      "etiqueta": "¿Qué resuelvo primero?",
+      "alcance": "tablero",
+      "prompt": "Decime qué casos atender primero, combinando prioridad y días abiertos. Máximo 3, con el motivo en una línea."
+    },
+    {
+      "id": "patron",
+      "etiqueta": "¿Se repite algo?",
+      "alcance": "tablero",
+      "prompt": "Mirá los casos y decime si hay un problema que se repite. Si no hay patrón claro, decilo."
+    },
+    {
+      "id": "respuesta",
+      "etiqueta": "Escribí la respuesta",
+      "alcance": "ficha",
+      "prompt": "Escribí una respuesta clara y empática para este caso, con el próximo paso concreto. Sin prometer plazos que no están en los datos."
+    }
+  ],
+  "semilla": [
+    {
+      "asunto": "No le llegó la factura de julio",
+      "quien": "Marcela Duarte",
+      "email": "mduarte@correo.com",
+      "prioridad": "Media",
+      "canal": "Mail",
+      "abierto": "2026-08-02",
+      "detalle": "Dice que la pidió dos veces y no le llegó.",
+      "estado": "Nuevo"
+    },
+    {
+      "asunto": "El producto llegó dañado",
+      "quien": "Julián Ferrer",
+      "email": "jferrer@correo.com",
+      "prioridad": "Alta",
+      "canal": "WhatsApp",
+      "abierto": "2026-08-03",
+      "detalle": "Mandó fotos, la caja venía golpeada.",
+      "estado": "En análisis"
+    },
+    {
+      "asunto": "Quiere cambiar el talle",
+      "quien": "Paula Ibáñez",
+      "email": "pibanez@correo.com",
+      "prioridad": "Baja",
+      "canal": "Presencial",
+      "abierto": "2026-07-29",
+      "detalle": "Pasa por el local esta semana.",
+      "estado": "Esperando al cliente"
+    },
+    {
+      "asunto": "Cobro duplicado",
+      "quien": "Ernesto Vidal",
+      "email": "evidal@correo.com",
+      "prioridad": "Alta",
+      "canal": "Teléfono",
+      "abierto": "2026-07-25",
+      "detalle": "Le salieron dos débitos el mismo día.",
+      "estado": "En análisis"
+    },
+    {
+      "asunto": "No puede entrar a su cuenta",
+      "quien": "Rocío Blanco",
+      "email": "rblanco@correo.com",
+      "prioridad": "Media",
+      "canal": "Mail",
+      "abierto": "2026-07-20",
+      "detalle": "Se resolvió reseteando la clave.",
+      "estado": "Resuelto"
+    },
+    {
+      "asunto": "Pregunta por garantía",
+      "quien": "Tomás Aguirre",
+      "email": "taguirre@correo.com",
+      "prioridad": "Baja",
+      "canal": "WhatsApp",
+      "abierto": "2026-08-01",
+      "detalle": "Quiere saber si cubre uso comercial.",
+      "estado": "Nuevo"
+    },
+    {
+      "asunto": "Demora en la entrega",
+      "quien": "Sabrina Coria",
+      "email": "scoria@correo.com",
+      "prioridad": "Alta",
+      "canal": "Teléfono",
+      "abierto": "2026-07-18",
+      "detalle": "Tercera vez que reclama. Hay que llamarla.",
+      "estado": "En análisis"
+    },
+    {
+      "asunto": "Pide comprobante de pago",
+      "quien": "Hernán Ojeda",
+      "email": "hojeda@correo.com",
+      "prioridad": "Baja",
+      "canal": "Mail",
+      "abierto": "2026-07-28",
+      "detalle": "Se le mandó por mail.",
+      "estado": "Resuelto"
+    }
+  ]
+}

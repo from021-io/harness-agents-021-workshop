@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "herramienta": {
+    "nombre": "Pedidos",
+    "queResuelve": "Seguir cada pedido desde que entra hasta que se entrega, sin perder ninguno por el camino.",
+    "emoji": "📦"
+  },
+  "registro": { "singular": "Pedido", "plural": "Pedidos", "campoTitulo": "cliente" },
+  "campos": [
+    { "id": "cliente", "etiqueta": "Cliente", "tipo": "texto", "requerido": true, "enTarjeta": true },
+    { "id": "detalle", "etiqueta": "Qué pidió", "tipo": "texto", "enTarjeta": true },
+    { "id": "cantidad", "etiqueta": "Cantidad", "tipo": "numero" },
+    { "id": "precioUnitario", "etiqueta": "Precio unitario", "tipo": "moneda" },
+    { "id": "entrega", "etiqueta": "Fecha de entrega", "tipo": "fecha", "enTarjeta": true },
+    { "id": "telefono", "etiqueta": "Teléfono", "tipo": "telefono" },
+    { "id": "pagado", "etiqueta": "¿Ya pagó?", "tipo": "booleano" },
+    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+  ],
+  "calculados": [
+    {
+      "id": "total",
+      "etiqueta": "Total",
+      "formula": "multiplicar",
+      "argumentos": ["cantidad", "precioUnitario"]
+    },
+    {
+      "id": "faltanDias",
+      "etiqueta": "Faltan",
+      "formula": "dias_hasta",
+      "argumentos": ["entrega"],
+      "sufijo": " días"
+    }
+  ],
+  "estados": {
+    "etiqueta": "Estado",
+    "valores": ["Recibido", "En preparación", "Listo", "Entregado", "Cancelado"]
+  },
+  "indicadores": [
+    { "etiqueta": "Por entregar", "tipo": "cantidad", "estado": "En preparación" },
+    { "etiqueta": "Listos", "tipo": "cantidad", "estado": "Listo" },
+    { "etiqueta": "Pedidos totales", "tipo": "cantidad" }
+  ],
+  "vistas": { "inicial": "tablero" },
+  "accionesIA": [
+    {
+      "id": "que_urge",
+      "etiqueta": "¿Qué entrego hoy?",
+      "alcance": "tablero",
+      "prompt": "Decime qué pedidos hay que entregar hoy o mañana y cuáles están retrasados. Ordenalos por urgencia."
+    },
+    {
+      "id": "sin_pagar",
+      "etiqueta": "¿Quién no pagó?",
+      "alcance": "tablero",
+      "prompt": "Listá los pedidos entregados que todavía no están pagados, con el total de cada uno y cuánto suman."
+    },
+    {
+      "id": "aviso_cliente",
+      "etiqueta": "Avisar al cliente",
+      "alcance": "ficha",
+      "prompt": "Escribí un mensaje corto de WhatsApp para avisarle a este cliente cómo viene su pedido. Cordial y directo."
+    }
+  ],
+  "semilla": [
+    {
+      "cliente": "Panadería La Esquina",
+      "detalle": "20 kg de harina 000",
+      "cantidad": 20,
+      "precioUnitario": 1200,
+      "entrega": "2026-08-05",
+      "telefono": "11 4455 6677",
+      "pagado": false,
+      "notas": "Entregar antes de las 9 de la mañana.",
+      "estado": "En preparación"
+    },
+    {
+      "cliente": "Restaurante Don Pepe",
+      "detalle": "Cajón de tomates",
+      "cantidad": 8,
+      "precioUnitario": 3500,
+      "entrega": "2026-08-04",
+      "telefono": "11 5566 7788",
+      "pagado": true,
+      "notas": "",
+      "estado": "Listo"
+    },
+    {
+      "cliente": "Almacén Rivas",
+      "detalle": "Surtido de conservas",
+      "cantidad": 40,
+      "precioUnitario": 900,
+      "entrega": "2026-08-08",
+      "telefono": "11 6677 8899",
+      "pagado": false,
+      "notas": "Pidió factura A.",
+      "estado": "Recibido"
+    },
+    {
+      "cliente": "Café Central",
+      "detalle": "Café en grano 5 kg",
+      "cantidad": 5,
+      "precioUnitario": 8000,
+      "entrega": "2026-08-01",
+      "telefono": "11 7788 9900",
+      "pagado": false,
+      "notas": "Ya entregado, falta cobrar.",
+      "estado": "Entregado"
+    },
+    {
+      "cliente": "Rotisería El Fuego",
+      "detalle": "Carbón x 15 bolsas",
+      "cantidad": 15,
+      "precioUnitario": 2200,
+      "entrega": "2026-08-06",
+      "telefono": "11 8899 0011",
+      "pagado": true,
+      "notas": "",
+      "estado": "En preparación"
+    },
+    {
+      "cliente": "Kiosco 24hs",
+      "detalle": "Golosinas surtidas",
+      "cantidad": 100,
+      "precioUnitario": 350,
+      "entrega": "2026-07-30",
+      "telefono": "11 9900 1122",
+      "pagado": true,
+      "notas": "Entregado y cobrado.",
+      "estado": "Entregado"
+    },
+    {
+      "cliente": "Bar La Birra",
+      "detalle": "Vasos descartables",
+      "cantidad": 500,
+      "precioUnitario": 80,
+      "entrega": "2026-08-03",
+      "telefono": "11 1122 3344",
+      "pagado": false,
+      "notas": "Canceló porque consiguió más barato.",
+      "estado": "Cancelado"
+    },
+    {
+      "cliente": "Verdulería Norte",
+      "detalle": "Cajones de manzana",
+      "cantidad": 12,
+      "precioUnitario": 4200,
+      "entrega": "2026-08-07",
+      "telefono": "11 2233 4455",
+      "pagado": false,
+      "notas": "Confirmar stock antes de preparar.",
+      "estado": "Recibido"
+    }
+  ]
+}

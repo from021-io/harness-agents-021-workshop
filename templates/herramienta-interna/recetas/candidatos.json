@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "herramienta": {
+    "nombre": "Búsqueda de personal",
+    "queResuelve": "Ordenar a los candidatos de una búsqueda y saber a quién hay que contactar.",
+    "emoji": "🧑‍💼"
+  },
+  "registro": { "singular": "Candidato", "plural": "Candidatos", "campoTitulo": "nombre" },
+  "campos": [
+    { "id": "nombre", "etiqueta": "Nombre", "tipo": "texto", "requerido": true, "enTarjeta": true },
+    { "id": "puesto", "etiqueta": "Puesto", "tipo": "texto", "enTarjeta": true },
+    { "id": "email", "etiqueta": "Email", "tipo": "email" },
+    { "id": "telefono", "etiqueta": "Teléfono", "tipo": "telefono" },
+    {
+      "id": "seniority",
+      "etiqueta": "Experiencia",
+      "tipo": "opcion",
+      "opciones": ["Junior", "Semi senior", "Senior"],
+      "enTarjeta": true
+    },
+    { "id": "pretension", "etiqueta": "Pretensión", "tipo": "moneda" },
+    { "id": "postulacion", "etiqueta": "Se postuló el", "tipo": "fecha" },
+    { "id": "fortalezas", "etiqueta": "Fortalezas", "tipo": "etiquetas" },
+    { "id": "notas", "etiqueta": "Notas de la entrevista", "tipo": "nota" }
+  ],
+  "calculados": [
+    {
+      "id": "diasEnProceso",
+      "etiqueta": "En proceso hace",
+      "formula": "dias_desde",
+      "argumentos": ["postulacion"],
+      "sufijo": " días"
+    }
+  ],
+  "estados": {
+    "etiqueta": "Instancia",
+    "valores": ["Postulado", "Preseleccionado", "Entrevistado", "Oferta", "Contratado", "Descartado"]
+  },
+  "indicadores": [
+    { "etiqueta": "Para entrevistar", "tipo": "cantidad", "estado": "Preseleccionado" },
+    { "etiqueta": "Con oferta", "tipo": "cantidad", "estado": "Oferta" },
+    { "etiqueta": "Total", "tipo": "cantidad" }
+  ],
+  "vistas": { "inicial": "tablero" },
+  "accionesIA": [
+    {
+      "id": "a_quien_entrevisto",
+      "etiqueta": "¿A quién entrevisto?",
+      "alcance": "tablero",
+      "prompt": "Decime a qué candidatos preseleccionados conviene entrevistar primero y por qué, mirando experiencia, fortalezas y días en proceso."
+    },
+    {
+      "id": "frenados",
+      "etiqueta": "¿Quién quedó frenado?",
+      "alcance": "tablero",
+      "prompt": "Listá los candidatos que llevan más días en la misma instancia sin avanzar. Son los que se pierden si no los contactamos."
+    },
+    {
+      "id": "invitacion",
+      "etiqueta": "Escribí la invitación",
+      "alcance": "ficha",
+      "prompt": "Escribí un mail corto invitando a este candidato a una entrevista. Cordial, sin prometer nada sobre el resultado."
+    }
+  ],
+  "semilla": [
+    {
+      "nombre": "Federico Salas",
+      "puesto": "Vendedor",
+      "email": "fsalas@correo.com",
+      "telefono": "11 3344 5566",
+      "seniority": "Semi senior",
+      "pretension": 900000,
+      "postulacion": "2026-07-25",
+      "fortalezas": ["Trato con clientes", "Manejo de caja"],
+      "notas": "Trabajó 4 años en retail.",
+      "estado": "Preseleccionado"
+    },
+    {
+      "nombre": "Lucía Mendoza",
+      "puesto": "Administrativa",
+      "email": "lmendoza@correo.com",
+      "telefono": "11 4455 6677",
+      "seniority": "Senior",
+      "pretension": 1200000,
+      "postulacion": "2026-07-20",
+      "fortalezas": ["Excel", "Facturación", "Organizada"],
+      "notas": "Muy buena entrevista. Puede arrancar en dos semanas.",
+      "estado": "Oferta"
+    },
+    {
+      "nombre": "Gonzalo Ríos",
+      "puesto": "Vendedor",
+      "email": "grios@correo.com",
+      "telefono": "11 5566 7788",
+      "seniority": "Junior",
+      "pretension": 650000,
+      "postulacion": "2026-08-02",
+      "fortalezas": ["Ganas de aprender"],
+      "notas": "Sin experiencia previa, muy buena actitud.",
+      "estado": "Postulado"
+    },
+    {
+      "nombre": "Ana Belén Torres",
+      "puesto": "Administrativa",
+      "email": "abtorres@correo.com",
+      "telefono": "11 6677 8899",
+      "seniority": "Semi senior",
+      "pretension": 950000,
+      "postulacion": "2026-07-15",
+      "fortalezas": ["Atención al detalle"],
+      "notas": "Entrevistada, quedó pendiente la segunda ronda.",
+      "estado": "Entrevistado"
+    },
+    {
+      "nombre": "Matías Peralta",
+      "puesto": "Repositor",
+      "email": "mperalta@correo.com",
+      "telefono": "11 7788 9900",
+      "seniority": "Junior",
+      "pretension": 600000,
+      "postulacion": "2026-07-30",
+      "fortalezas": ["Disponibilidad horaria"],
+      "notas": "",
+      "estado": "Postulado"
+    },
+    {
+      "nombre": "Carolina Duarte",
+      "puesto": "Vendedora",
+      "email": "cduarte@correo.com",
+      "telefono": "11 8899 0011",
+      "seniority": "Senior",
+      "pretension": 1400000,
+      "postulacion": "2026-07-10",
+      "fortalezas": ["Cierre de ventas", "Liderazgo"],
+      "notas": "Pretensión por encima del presupuesto.",
+      "estado": "Descartado"
+    },
+    {
+      "nombre": "Ignacio Sosa",
+      "puesto": "Administrativo",
+      "email": "isosa@correo.com",
+      "telefono": "11 9900 1122",
+      "seniority": "Junior",
+      "pretension": 700000,
+      "postulacion": "2026-07-28",
+      "fortalezas": ["Estudiante avanzado"],
+      "notas": "Busca media jornada.",
+      "estado": "Preseleccionado"
+    },
+    {
+      "nombre": "Valentina Cruz",
+      "puesto": "Vendedora",
+      "email": "vcruz@correo.com",
+      "telefono": "11 1122 3344",
+      "seniority": "Semi senior",
+      "pretension": 880000,
+      "postulacion": "2026-06-28",
+      "fortalezas": ["Redes sociales", "Atención"],
+      "notas": "Ya arrancó, contratada en julio.",
+      "estado": "Contratado"
+    }
+  ]
+}

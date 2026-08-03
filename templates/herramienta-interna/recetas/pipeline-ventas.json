@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "herramienta": {
+    "nombre": "Pipeline de clientes",
+    "queResuelve": "Ver en qué etapa está cada oportunidad y qué hay que hacer hoy para que avance.",
+    "emoji": "💼"
+  },
+  "registro": { "singular": "Cliente", "plural": "Clientes", "campoTitulo": "nombre" },
+  "campos": [
+    { "id": "nombre", "etiqueta": "Nombre", "tipo": "texto", "requerido": true, "enTarjeta": true },
+    { "id": "empresa", "etiqueta": "Empresa", "tipo": "texto", "enTarjeta": true },
+    { "id": "valor", "etiqueta": "Valor estimado", "tipo": "moneda", "enTarjeta": true },
+    { "id": "ultimoContacto", "etiqueta": "Último contacto", "tipo": "fecha" },
+    { "id": "proximaAccion", "etiqueta": "Próxima acción", "tipo": "texto" },
+    {
+      "id": "canal",
+      "etiqueta": "Cómo llegó",
+      "tipo": "opcion",
+      "opciones": ["Referido", "Inbound", "Frío", "Evento"]
+    },
+    { "id": "email", "etiqueta": "Email", "tipo": "email" },
+    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+  ],
+  "calculados": [
+    {
+      "id": "diasSinContacto",
+      "etiqueta": "Días sin contacto",
+      "formula": "dias_desde",
+      "argumentos": ["ultimoContacto"],
+      "sufijo": " días"
+    }
+  ],
+  "subLista": {
+    "id": "interacciones",
+    "singular": "Interacción",
+    "plural": "Interacciones",
+    "campos": [
+      { "id": "fecha", "etiqueta": "Fecha", "tipo": "fecha", "requerido": true },
+      { "id": "detalle", "etiqueta": "Qué pasó", "tipo": "nota", "requerido": true }
+    ]
+  },
+  "estados": {
+    "etiqueta": "Etapa",
+    "valores": ["Nuevo", "Contactado", "Propuesta", "Ganado", "Perdido"]
+  },
+  "indicadores": [
+    { "etiqueta": "En juego", "tipo": "suma", "campo": "valor", "estado": "Propuesta" },
+    { "etiqueta": "Ganados", "tipo": "cantidad", "estado": "Ganado" },
+    { "etiqueta": "Total", "tipo": "cantidad" }
+  ],
+  "vistas": { "inicial": "tablero" },
+  "accionesIA": [
+    {
+      "id": "a_quien_llamo",
+      "etiqueta": "¿A quién llamo hoy?",
+      "alcance": "tablero",
+      "prompt": "Mirá los clientes y decime a quién conviene contactar hoy. Priorizá los que hace más días que no tienen contacto y los que están en Propuesta. Máximo 3, con una razón de una línea cada uno."
+    },
+    {
+      "id": "estado_pipeline",
+      "etiqueta": "Resumen del pipeline",
+      "alcance": "tablero",
+      "prompt": "Resumí en 3 líneas cómo viene el pipeline: cuánto hay en juego, qué está trabado y qué se movió."
+    },
+    {
+      "id": "seguimiento",
+      "etiqueta": "Escribí el seguimiento",
+      "alcance": "ficha",
+      "prompt": "Escribí un mail corto y cordial de seguimiento para este cliente, usando sus notas y su última interacción. Sin exagerar, sin promesas."
+    }
+  ],
+  "semilla": [
+    {
+      "nombre": "Laura Giménez",
+      "empresa": "Ferretería Central",
+      "valor": 180000,
+      "ultimoContacto": "2026-07-28",
+      "proximaAccion": "Mandar propuesta revisada",
+      "canal": "Referido",
+      "email": "laura@ferreteriacentral.com",
+      "notas": "Necesita cerrar antes de fin de mes por presupuesto.",
+      "estado": "Propuesta"
+    },
+    {
+      "nombre": "Martín Rey",
+      "empresa": "Estudio Rey",
+      "valor": 90000,
+      "ultimoContacto": "2026-08-01",
+      "proximaAccion": "Llamar para agendar demo",
+      "canal": "Inbound",
+      "email": "martin@estudiorey.com",
+      "notas": "Llegó por la web, pidió ver precios.",
+      "estado": "Contactado"
+    },
+    {
+      "nombre": "Sofía Paz",
+      "empresa": "Distribuidora Paz",
+      "valor": 340000,
+      "ultimoContacto": "2026-07-15",
+      "proximaAccion": "Reunión con el socio",
+      "canal": "Evento",
+      "email": "spaz@distribuidorapaz.com",
+      "notas": "Decide con el hermano, hay que convencer a los dos.",
+      "estado": "Propuesta"
+    },
+    {
+      "nombre": "Diego Ferrari",
+      "empresa": "Logística DF",
+      "valor": 120000,
+      "ultimoContacto": "2026-08-02",
+      "proximaAccion": "Enviar contrato",
+      "canal": "Referido",
+      "email": "diego@logisticadf.com",
+      "notas": "Ya dijo que sí de palabra.",
+      "estado": "Ganado"
+    },
+    {
+      "nombre": "Camila Ortiz",
+      "empresa": "Ortiz y Asociados",
+      "valor": 75000,
+      "ultimoContacto": "2026-07-30",
+      "proximaAccion": "Primer llamado",
+      "canal": "Frío",
+      "email": "camila@ortizyasociados.com",
+      "notas": "Contacto de LinkedIn, todavía no respondió.",
+      "estado": "Nuevo"
+    },
+    {
+      "nombre": "Andrés Molina",
+      "empresa": "Molina Construcciones",
+      "valor": 260000,
+      "ultimoContacto": "2026-06-20",
+      "proximaAccion": "Reactivar conversación",
+      "canal": "Evento",
+      "email": "amolina@molinaconstrucciones.com",
+      "notas": "Frenó por obra parada, dijo de retomar en agosto.",
+      "estado": "Contactado"
+    },
+    {
+      "nombre": "Valeria Sosa",
+      "empresa": "Kiosco Sosa",
+      "valor": 45000,
+      "ultimoContacto": "2026-07-10",
+      "proximaAccion": "Cerrar o descartar",
+      "canal": "Inbound",
+      "email": "vale@kioscososa.com",
+      "notas": "Le pareció caro, quedó en pensarlo.",
+      "estado": "Perdido"
+    },
+    {
+      "nombre": "Nicolás Vega",
+      "empresa": "Vega Textil",
+      "valor": 210000,
+      "ultimoContacto": "2026-08-03",
+      "proximaAccion": "Preparar propuesta",
+      "canal": "Referido",
+      "email": "nvega@vegatextil.com",
+      "notas": "Lo recomendó Diego Ferrari.",
+      "estado": "Nuevo"
+    }
+  ]
+}
