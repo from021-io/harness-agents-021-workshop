@@ -2,56 +2,16 @@
 
 Este es tu mapa. No hay que memorizar nada: Claude Code te va llevando. Esto es solo para que sepas qué viene después.
 
-## Antes de empezar (en tu casa, 15 min)
+## Si estás leyendo esto, ya tenés todo listo
 
-Solo 3 cuentas y 1 mensaje. Nada de terminal, nada técnico: Claude Code prepara tu compu solo.
+La preparación (instalar Claude Code, crear tus cuentas y descargar este material) va antes del taller y te la mandan por mail o mensaje al inscribirte. Si llegaste hasta acá, esa parte ya está hecha.
 
-**Cuentas (creá las que te falten):**
-
-- [ ] **Cuenta de Claude** con plan pago (Pro): entrá a [claude.ai](https://claude.ai), registrate y elegí el plan. Es el cerebro de todo el taller.
-- [ ] **Cuenta de GitHub** (gratis): entrá a [github.com/signup](https://github.com/signup) y creala. Ahí va a vivir tu copia del taller y lo que construyas.
-- [ ] **Telegram**: si no lo tenés, bajalo en el celular ([telegram.org](https://telegram.org/apps)) y creá tu cuenta con tu número. Tu agente te va a escribir ahí.
-- [ ] **Telegram también en la compu** (esto te ahorra tiempo en el taller): entrá a [web.telegram.org](https://web.telegram.org) y vinculalo. Desde el celular: **Ajustes → Dispositivos → Vincular dispositivo** y escaneá el QR que aparece en la pantalla. Dejalo abierto: vas a poder copiar y pegar en vez de tipear del celular.
-- [ ] **Cuenta de Vercel** (gratis): entrá a [vercel.com/signup](https://vercel.com/signup), tocá **Continue with GitHub** y listo. Sirve para que al final tu agente viva en internet.
-- [ ] Solo agente de agenda: usás **tu cuenta de Google de siempre** (tu calendario personal). Mandale tu Gmail al organizador cuando te inscribís, para habilitarte.
-
-**Instalá Claude Code y dejá que prepare todo:**
-
-- [ ] Descargá la app de Claude Code desde [claude.com/claude-code](https://claude.com/claude-code), abrila e iniciá sesión con tu cuenta de Claude.
-- [ ] Copiá y pegá este mensaje en Claude Code, tal cual:
-
-```
-Preparame la computadora para el taller de agentes. Hacé todo vos, no me
-hagas ninguna pregunta técnica y resolvé lo que falte:
-1. Fijate si están instalados Git, Node.js versión 24 o más nueva, la
-   herramienta de GitHub (gh) y el comando de terminal "claude" (Claude
-   Code). Si falta algo, instalalo vos.
-2. Conectá mi cuenta de GitHub (gh auth login): avisame cuándo tocar
-   "Autorizar" en el navegador.
-3. Hacé un fork a mi cuenta del repo
-   https://github.com/from021-io/harness-agents-021-workshop
-   y descargá mi copia a una carpeta "taller-agentes" en mi carpeta
-   personal.
-4. Entrá a esa carpeta y corré: bash scripts/preparar.sh
-5. Verificá que todo haya quedado bien y terminá diciéndome
-   "✅ Listo para el taller", la ruta exacta de la carpeta, y esta
-   instrucción: el día del taller abro una conversación NUEVA en la
-   app de Claude Code, elijo esa carpeta como carpeta de trabajo, y
-   escribo /crear-agente.
-```
-
-Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el navegador (es Claude Code conectándose a tu GitHub).
-
-> 💡 **Regla de oro con Claude Code**: cada vez que te pida permiso para hacer algo ("Allow?" / "¿Permitir?"), elegí **Allow**, y si te da la opción, **Always allow** (permitir siempre), así no te vuelve a preguntar. Vale para toda la preparación y todo el taller.
->
-> Mejor todavía: abajo del cuadro donde escribís hay un selector de permisos: elegí **Bypass permissions** y Claude no te interrumpe más con pedidos de permiso durante el taller.
-
-- [ ] Esperá el "✅ Listo para el taller". Puede tardar unos minutos (descarga cosas pesadas). Si algo falla, Claude lo intenta arreglar solo; si se traba, mandale la pantalla al organizador.
+> 💡 **Regla de oro con Claude Code**: cada vez que te pida permiso para hacer algo ("Allow?" / "¿Permitir?"), elegí **Allow**, y si te da la opción, **Always allow**. Mejor todavía: abajo del cuadro donde escribís hay un selector de permisos, elegí **Bypass permissions** y no te interrumpe más durante el taller.
 
 **Qué es de quién** (para que no haya sorpresas):
 
 - **Tuyo**: tu Telegram, tu calendario de Google, tu cuenta de Claude, tu GitHub (con tu copia del taller) y tu cuenta de Vercel. Tu agente trabaja con TUS cosas y tu trabajo se guarda en TU GitHub.
-- **Del organizador**: la "llave del modelo" (lo que le da inteligencia al agente) y los permisos de Google del taller. Te los dan el día del evento, no necesitás nada de eso antes.
+- **De quien da el taller**: la "llave del modelo" (lo que le da inteligencia al agente) y los permisos de Google. Te los dan el día del evento.
 
 ## Minuto a minuto
 
@@ -62,7 +22,7 @@ Lo único que hacés vos en el medio: tocar **Autorizar** cuando se abra el nave
 **3-10 · La entrevista.** El AI PM te pregunta qué agente querés (agenda o noticias), quién sos y tus preferencias. Respondé como en una charla; acá se define tu agente.
 
 **10-20 · La construcción.** El AI Engineer arma todo. Te va a pedir solo 2 o 3 cosas que únicamente vos podés hacer:
-1. Pegar la **llave del modelo** que te dio el organizador.
+1. Pegar la **llave del modelo** que te dieron en el taller.
 2. Crear tu **bot de Telegram**: en Telegram Web buscás **@BotFather**, le escribís `/newbot`, elegís un nombre, y copiás el código que te da. Te guía paso a paso. Después le mandás "hola" a tu bot.
 3. Solo agenda: tocar **Permitir** cuando se abra Google en el navegador.
 
@@ -78,7 +38,7 @@ Mientras tanto, él decide todo lo técnico y te lo anota en `mi-agente/DECISION
 
 **¿Tengo que entender el código?** No. Podés mirarlo si te da curiosidad (`mi-agente/`), pero nada del taller lo requiere.
 
-**¿Qué pasa si algo falla?** Se arregla solo. Si tu agente deja de contestarte por Telegram, escribí `/arreglar` en Claude Code: lo despierta en unos segundos. Si sigue trabado, avisale a quien da el taller.
+**¿Qué pasa si algo falla?** Se arregla solo. Si tu agente deja de contestarte por Telegram, escribí `/arreglar` en Claude Code: lo despierta en unos segundos. Si sigue trabado, levantá la mano y avisá.
 
 **¿Mi agente funciona cuando apago la compu?** Después de `/publicar`, sí: vive en internet y te escribe solo todos los días.
 

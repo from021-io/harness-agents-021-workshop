@@ -24,9 +24,9 @@ Tres cuentas tuyas y una app. Sin terminal, sin pasos técnicos:
 4. **Cuenta gratuita de Vercel** (para que tu agente viva en internet al final).
 5. Solo agente de agenda: tu cuenta de Google de siempre (se usa TU calendario).
 
-La llave del modelo y los permisos de Google los reparte el organizador el día del taller.
+La llave del modelo y los permisos de Google los reparten el día del taller.
 
-La preparación completa de tu compu la hace Claude Code solo (instala lo que falte y descarga este material): los pasos exactos y el mensaje para pegarle están en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).
+La preparación de tu compu (instalar lo que falte y descargar este material) la hace Claude Code solo, con un mensaje que te mandan al inscribirte.
 
 ## Cómo arranca el taller
 
@@ -55,5 +55,4 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 - `.claude/` tiene el equipo de IA (PM + Engineer) y los comandos del taller.
 - Más detalle en [docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md).
 
-**¿Organizás un taller?** Leé [docs/ORGANIZADOR.md](docs/ORGANIZADOR.md): hay que preparar un par de llaves antes.
-**¿Participás de uno?** Tu guion está en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).
+**¿Participás de un taller?** Tu guion minuto a minuto está en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).

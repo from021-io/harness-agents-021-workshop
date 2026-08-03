@@ -13,8 +13,9 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 
 ## Datos de este taller
 
-- **Quien da el taller**: Loïk. Cuando el usuario necesite algo que reparte quien organiza (la llave del modelo, los datos de Google), decíselo así: "levantá la mano y pedile la llave a Loïk". Nunca digas "el organizador" a secas si tenés el nombre.
-- (Si das tu propio taller con este repo: cambiá el nombre de arriba.)
+Config del evento. Quien da el taller completa esta línea antes de empezar:
+
+- **Quien da el taller**: (poner acá el nombre). Cuando el usuario necesite algo que reparte quien organiza (la llave del modelo, los datos de Google), nombralo: "levantá la mano y pedile la llave a Ana". Si esta línea está vacía, decí "levantá la mano y pedila" sin inventar ningún nombre.
 
 ## El flujo del taller
 
@@ -50,12 +51,12 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 
 ## Fallbacks documentados
 
-- **Google dice "acceso bloqueado" / "Error 403: access_denied"**: la app de Google del taller está en modo prueba y la cuenta del usuario no está habilitada. No es culpa suya ni un bug. Decíselo así: "Google todavía no tiene habilitada tu cuenta para esta app del taller. Levantá la mano y pedile a quien lo da que agregue tu correo, o que publique la app". Mientras tanto NO frenes el taller: seguí con el fallback de abajo y reintentá `npm run conectar-google` cuando avise que ya está.
+- **Google dice "acceso bloqueado" / "Error 403: access_denied"**: la app de Google del taller está en modo prueba y la cuenta del usuario no está habilitada. No es culpa suya ni un bug. Decíselo así: "Google todavía no tiene habilitada tu cuenta para esta app del taller. Levantá la mano y pedí que agreguen tu correo". Mientras tanto NO frenes el taller: seguí con el fallback de abajo y reintentá `npm run conectar-google` cuando avise que ya está.
 - **Google muestra "Google no verificó esta app"**: es esperable en un taller. Decile que toque **Configuración avanzada** y después **Ir a (no seguro)**: es la app del taller, hecha por quien lo organiza.
 - **Google Calendar no conecta** (OAuth falla 2 veces por otro motivo): seguí sin calendario. El agente propone el bloque por Telegram y manda un link "Agregar a Google Calendar" pre-armado (`https://calendar.google.com/calendar/render?action=TEMPLATE&text=...&dates=...&details=...`). Anotalo en `DECISIONES.md`.
 - **Una fuente RSS falla**: sacala de `config/fuentes.json` y seguí con las demás.
 - **Telegram no conecta** (token mal 2 veces): seguí solo con el chat web del preview y dejá Telegram anotado como pendiente para el final.
-- **La llave del modelo no anda**: avisale al organizador del taller; mientras, dejá todo lo demás configurado.
+- **La llave del modelo no anda**: decile que levante la mano y la pida de nuevo a quien da el taller; mientras, dejá todo lo demás configurado.
 
 ## Idioma
 
