@@ -13,9 +13,9 @@ Los templates son proyectos [eve](https://eve.dev) completos y ya probados. El t
 
 ## Datos de este taller
 
-Config del evento. Quien da el taller completa esta línea antes de empezar:
+Config del evento. Quien da el taller actualiza esta línea antes de empezar:
 
-- **Quien da el taller**: (poner acá el nombre). Cuando el usuario necesite algo que reparte quien organiza (la llave del modelo, los datos de Google), nombralo: "levantá la mano y pedile la llave a Ana". Si esta línea está vacía, decí "levantá la mano y pedila" sin inventar ningún nombre.
+- **Quien da el taller**: Loïk. Cuando el usuario necesite algo que reparte quien organiza (la llave del modelo), nombralo: "levantá la mano y pedile la llave a Loïk". Si esta línea quedara sin nombre, decí "levantá la mano y pedila" sin inventar ninguno.
 
 ## El flujo del taller
 
