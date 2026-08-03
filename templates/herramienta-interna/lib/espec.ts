@@ -63,6 +63,15 @@ const indicadorSchema = z.object({
   estado: z.string().optional(),
 });
 
+/** Entrada del menú lateral: una vista completa o una vista filtrada por estado. */
+const navegacionSchema = z.object({
+  id: idSchema,
+  etiqueta: z.string().min(1),
+  vista: z.enum(["tablero", "lista"]).default("lista"),
+  /** Si está, la entrada muestra solo las fichas en ese estado. */
+  estado: z.string().optional(),
+});
+
 const accionIASchema = z.object({
   id: idSchema,
   etiqueta: z.string().min(1),
@@ -77,6 +86,11 @@ export const especSchema = z
       nombre: z.string().min(1),
       queResuelve: z.string().default(""),
       emoji: z.string().default("📋"),
+      /** Color principal en hex (#2563eb). Tiñe botones, acentos y el menú. */
+      color: z
+        .string()
+        .regex(/^#[0-9a-fA-F]{6}$/, "el color debe ser un hex de 6 dígitos, por ejemplo #2563eb")
+        .optional(),
     }),
     registro: z.object({
       singular: z.string().min(1),
@@ -94,6 +108,7 @@ export const especSchema = z
     vistas: z
       .object({ inicial: z.enum(["tablero", "lista"]).default("tablero") })
       .default({ inicial: "tablero" }),
+    navegacion: z.array(navegacionSchema).default([]),
     accionesIA: z.array(accionIASchema).default([]),
     semilla: z.array(z.record(z.string(), z.unknown())).default([]),
   })
@@ -141,6 +156,15 @@ export const especSchema = z
       }
     });
 
+    espec.navegacion.forEach((entrada, i) => {
+      if (entrada.estado && !espec.estados.valores.includes(entrada.estado)) {
+        error(`la entrada de menú "${entrada.etiqueta}" filtra por un estado que no existe`, [
+          "navegacion",
+          i,
+        ]);
+      }
+    });
+
     espec.semilla.forEach((registro, i) => {
       const estado = registro.estado;
       if (typeof estado === "string" && !espec.estados.valores.includes(estado)) {
@@ -153,11 +177,47 @@ export const especSchema = z
   });
 
 export type Espec = z.infer<typeof especSchema>;
+export type EntradaMenu = z.infer<typeof navegacionSchema>;
 export type Campo = z.infer<typeof campoSchema>;
 export type CampoCalculado = z.infer<typeof campoCalculadoSchema>;
 export type AccionIA = z.infer<typeof accionIASchema>;
 export type Indicador = z.infer<typeof indicadorSchema>;
 export type TipoCampo = (typeof TIPOS_CAMPO)[number];
+
+/**
+ * Menú lateral efectivo. Si la especificación no trae uno, armamos el mínimo
+ * razonable: las dos vistas completas.
+ */
+export function menuDe(espec: Espec): EntradaMenu[] {
+  if (espec.navegacion.length > 0) return espec.navegacion;
+  return [
+    { id: "tablero", etiqueta: "Tablero", vista: "tablero" },
+    { id: "lista", etiqueta: "Lista", vista: "lista" },
+  ];
+}
+
+/**
+ * Traduce el color elegido a las variables que usa toda la interfaz. Con esto
+ * alcanza para teñir la herramienta entera: nadie edita CSS a mano.
+ */
+export function variablesDeColor(color?: string): Record<string, string> {
+  if (!color) return {};
+  const n = Number.parseInt(color.slice(1), 16);
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  // Luminancia relativa, para decidir si el texto encima va claro u oscuro.
+  const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  const contraste = lum > 0.6 ? "#111111" : "#ffffff";
+  const mezcla = (pct: number) => `color-mix(in srgb, ${color} ${pct}%, transparent)`;
+  return {
+    "--primary": color,
+    "--primary-foreground": contraste,
+    "--ring": color,
+    "--sidebar-primary": color,
+    "--sidebar-primary-foreground": contraste,
+    "--sidebar-accent": mezcla(12),
+    "--accent": mezcla(12),
+  };
+}
 
 /** Valida una especificación y devuelve errores en castellano, listos para mostrar. */
 export function validarEspec(datos: unknown):

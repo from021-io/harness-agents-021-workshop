@@ -15,19 +15,12 @@ import {
   mover as moverRegistro,
   type Registro,
 } from "@/lib/datos";
+import { MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
 type Accion = {
   tipo: "crear" | "actualizar" | "mover";
@@ -135,19 +128,43 @@ export function Asistente({ espec, registros, pedido, onAplicarCambios }: Props)
       .join("");
 
   return (
-    <Sheet open={abierto} onOpenChange={setAbierto}>
-      <SheetTrigger asChild>
-        <Button variant="outline">✨ Asistente</Button>
-      </SheetTrigger>
+    <>
+      {/* Burbuja fija abajo a la derecha, como cualquier chat de producto. */}
+      <button
+        type="button"
+        aria-label={abierto ? "Cerrar asistente" : "Abrir asistente"}
+        onClick={() => setAbierto((v) => !v)}
+        className="bg-primary text-primary-foreground fixed right-5 bottom-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95"
+      >
+        <span
+          className={`transition-all duration-200 ${abierto ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"}`}
+        >
+          <MessageCircle className="size-6" />
+        </span>
+        <span
+          className={`absolute transition-all duration-200 ${abierto ? "scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"}`}
+        >
+          <X className="size-6" />
+        </span>
+      </button>
 
-      <SheetContent className="flex w-full flex-col gap-0 p-0 sm:max-w-md">
-        <SheetHeader className="border-b">
-          <SheetTitle>Asistente</SheetTitle>
-          <SheetDescription>
+      <div
+        role="dialog"
+        aria-label="Asistente"
+        aria-hidden={!abierto}
+        className={`bg-card fixed right-5 bottom-24 z-50 flex max-h-[min(600px,calc(100vh-8rem))] w-[min(24rem,calc(100vw-2.5rem))] origin-bottom-right flex-col overflow-hidden rounded-2xl border shadow-2xl transition-all duration-200 ease-out ${
+          abierto
+            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none translate-y-3 scale-95 opacity-0"
+        }`}
+      >
+        <header className="grid gap-0.5 border-b p-4">
+          <p className="text-sm font-semibold">Asistente</p>
+          <p className="text-muted-foreground text-xs">
             Preguntale sobre tus {espec.registro.plural.toLowerCase()}, dictale una ficha nueva o
             pedile que escriba algo.
-          </SheetDescription>
-        </SheetHeader>
+          </p>
+        </header>
 
         <ScrollArea className="flex-1">
           <div className="grid gap-3 p-4">
@@ -252,7 +269,7 @@ export function Asistente({ espec, registros, pedido, onAplicarCambios }: Props)
             Enviar
           </Button>
         </form>
-      </SheetContent>
-    </Sheet>
+      </div>
+    </>
   );
 }

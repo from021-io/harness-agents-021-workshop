@@ -77,12 +77,12 @@ Máximo 6 preguntas de producto, y **la primera va con AskUserQuestion**, no a t
 2. **Qué es cada ficha** (cliente, pedido, producto, reclamo, candidato). Proponelo vos a partir de lo que eligió y confirmá; no lo preguntes en frío.
 3. **Qué necesitás ver de cada una**: proponé 5-7 campos y pedí que agregue o saque.
 4. **Por qué etapas pasa**: proponé las etapas y confirmá.
-5. **Qué decisión querés tomar mirando esto**: ofrecé opciones armadas con lo que ya sabés ("saber a quién contactar hoy", "ver qué está trabado", "saber qué reponer"), porque de acá salen los atajos de IA.
+5. **Qué decisión querés tomar mirando esto**: ofrecé opciones armadas con lo que ya sabés ("saber a quién contactar hoy", "ver qué está trabado", "saber qué reponer"), porque de acá salen los atajos de IA **y también el menú lateral**. Cada respuesta se convierte en una entrada del menú: además de la vista completa, las vistas que de verdad va a mirar todos los días ("Para entregar hoy", "Sin abrir", "Por reponer"). Proponé 3 o 4 entradas y confirmá.
 6. **Con qué lo hacés hoy**: opciones (Excel o Sheets, papel o cuaderno, WhatsApp y notas sueltas, otro sistema, nada). Sirve para que los datos de ejemplo se parezcan a lo suyo.
 
 Y dos de estilo, al final, cortas:
 
-7. **Color principal**, con AskUserQuestion: azul sobrio, verde, violeta, naranja o gris minimal, más la opción de pegar el color de su marca. Si le da lo mismo, seguís con el neutral: no se frena el taller por un color.
+7. **Color principal**, con AskUserQuestion: azul sobrio (#2563eb), verde (#0d9488), violeta (#7c3aed), naranja (#ea580c) o rosa (#db2777), más la opción de pegar el color de su marca en hex. Anotá el hex en el brief, no el nombre: eso es lo que tiñe la herramienta entera. Si le da lo mismo, elegí vos uno que pegue con su rubro y seguí.
 8. **Nombre de la herramienta y un emoji** para el encabezado.
 
 **Avisá una vez, sin dramatizar**: es una versión de demostración con datos de ejemplo, así que mejor no cargar datos sensibles reales (de salud, financieros o de terceros).
@@ -95,9 +95,10 @@ Además de `PRODUCTO.md` (misma estructura, con la elección `herramienta-intern
 - Campos: id corto, etiqueta, tipo (texto, nota, número, moneda, fecha, opción, email, teléfono, booleano, etiquetas) y cuáles se ven en la tarjeta.
 - Etapas, en orden.
 - Indicadores para el encabezado.
+- **Menú lateral**: 3 o 4 entradas, cada una con su etiqueta, si es tablero o lista, y si filtra por un estado.
 - Calculados y sub-lista, si hicieran falta.
 - Atajos de IA: etiqueta y si aplican al tablero o a una ficha.
-- Color y nombre.
+- **Color en hex** y nombre con emoji.
 
 No escribas vos el archivo de configuración: eso se arma en la construcción a partir de este brief.
 

@@ -3,43 +3,108 @@
   "herramienta": {
     "nombre": "Stock",
     "queResuelve": "Saber qué hay, qué se está por acabar y qué hay que reponer.",
-    "emoji": "📊"
+    "emoji": "📊",
+    "color": "#0d9488"
   },
-  "registro": { "singular": "Producto", "plural": "Productos", "campoTitulo": "producto" },
+  "registro": {
+    "singular": "Producto",
+    "plural": "Productos",
+    "campoTitulo": "producto"
+  },
   "campos": [
-    { "id": "producto", "etiqueta": "Producto", "tipo": "texto", "requerido": true, "enTarjeta": true },
-    { "id": "codigo", "etiqueta": "Código", "tipo": "texto" },
-    { "id": "cantidad", "etiqueta": "Cantidad", "tipo": "numero", "enTarjeta": true },
-    { "id": "minimo", "etiqueta": "Mínimo deseado", "tipo": "numero" },
-    { "id": "costo", "etiqueta": "Costo unitario", "tipo": "moneda" },
-    { "id": "proveedor", "etiqueta": "Proveedor", "tipo": "texto", "enTarjeta": true },
-    { "id": "ultimaCompra", "etiqueta": "Última compra", "tipo": "fecha" },
-    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+    {
+      "id": "producto",
+      "etiqueta": "Producto",
+      "tipo": "texto",
+      "requerido": true,
+      "enTarjeta": true
+    },
+    {
+      "id": "codigo",
+      "etiqueta": "Código",
+      "tipo": "texto"
+    },
+    {
+      "id": "cantidad",
+      "etiqueta": "Cantidad",
+      "tipo": "numero",
+      "enTarjeta": true
+    },
+    {
+      "id": "minimo",
+      "etiqueta": "Mínimo deseado",
+      "tipo": "numero"
+    },
+    {
+      "id": "costo",
+      "etiqueta": "Costo unitario",
+      "tipo": "moneda"
+    },
+    {
+      "id": "proveedor",
+      "etiqueta": "Proveedor",
+      "tipo": "texto",
+      "enTarjeta": true
+    },
+    {
+      "id": "ultimaCompra",
+      "etiqueta": "Última compra",
+      "tipo": "fecha"
+    },
+    {
+      "id": "notas",
+      "etiqueta": "Notas",
+      "tipo": "nota"
+    }
   ],
   "calculados": [
     {
       "id": "margenStock",
       "etiqueta": "Sobre el mínimo",
       "formula": "restar",
-      "argumentos": ["cantidad", "minimo"]
+      "argumentos": [
+        "cantidad",
+        "minimo"
+      ]
     },
     {
       "id": "valorStock",
       "etiqueta": "Valor en stock",
       "formula": "multiplicar",
-      "argumentos": ["cantidad", "costo"]
+      "argumentos": [
+        "cantidad",
+        "costo"
+      ]
     }
   ],
   "estados": {
     "etiqueta": "Situación",
-    "valores": ["Con stock", "Por reponer", "Pedido al proveedor", "Sin stock"]
+    "valores": [
+      "Con stock",
+      "Por reponer",
+      "Pedido al proveedor",
+      "Sin stock"
+    ]
   },
   "indicadores": [
-    { "etiqueta": "Por reponer", "tipo": "cantidad", "estado": "Por reponer" },
-    { "etiqueta": "Sin stock", "tipo": "cantidad", "estado": "Sin stock" },
-    { "etiqueta": "Productos", "tipo": "cantidad" }
+    {
+      "etiqueta": "Por reponer",
+      "tipo": "cantidad",
+      "estado": "Por reponer"
+    },
+    {
+      "etiqueta": "Sin stock",
+      "tipo": "cantidad",
+      "estado": "Sin stock"
+    },
+    {
+      "etiqueta": "Productos",
+      "tipo": "cantidad"
+    }
   ],
-  "vistas": { "inicial": "lista" },
+  "vistas": {
+    "inicial": "lista"
+  },
   "accionesIA": [
     {
       "id": "que_repongo",
@@ -148,6 +213,30 @@
       "ultimaCompra": "2026-08-01",
       "notas": "Producto caro, no acumular.",
       "estado": "Con stock"
+    }
+  ],
+  "navegacion": [
+    {
+      "id": "todos",
+      "etiqueta": "Todo el stock",
+      "vista": "lista"
+    },
+    {
+      "id": "reponer",
+      "etiqueta": "Por reponer",
+      "vista": "lista",
+      "estado": "Por reponer"
+    },
+    {
+      "id": "sinstock",
+      "etiqueta": "Sin stock",
+      "vista": "lista",
+      "estado": "Sin stock"
+    },
+    {
+      "id": "tablero",
+      "etiqueta": "Por situación",
+      "vista": "tablero"
     }
   ]
 }

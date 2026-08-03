@@ -3,35 +3,74 @@
   "herramienta": {
     "nombre": "Pedidos de soporte",
     "queResuelve": "Que ningún reclamo se pierda y saber qué hay que resolver primero.",
-    "emoji": "🎧"
+    "emoji": "🎧",
+    "color": "#7c3aed"
   },
-  "registro": { "singular": "Caso", "plural": "Casos", "campoTitulo": "asunto" },
+  "registro": {
+    "singular": "Caso",
+    "plural": "Casos",
+    "campoTitulo": "asunto"
+  },
   "campos": [
-    { "id": "asunto", "etiqueta": "Asunto", "tipo": "texto", "requerido": true, "enTarjeta": true },
-    { "id": "quien", "etiqueta": "Quién lo pidió", "tipo": "texto", "enTarjeta": true },
-    { "id": "email", "etiqueta": "Email", "tipo": "email" },
+    {
+      "id": "asunto",
+      "etiqueta": "Asunto",
+      "tipo": "texto",
+      "requerido": true,
+      "enTarjeta": true
+    },
+    {
+      "id": "quien",
+      "etiqueta": "Quién lo pidió",
+      "tipo": "texto",
+      "enTarjeta": true
+    },
+    {
+      "id": "email",
+      "etiqueta": "Email",
+      "tipo": "email"
+    },
     {
       "id": "prioridad",
       "etiqueta": "Prioridad",
       "tipo": "opcion",
-      "opciones": ["Alta", "Media", "Baja"],
+      "opciones": [
+        "Alta",
+        "Media",
+        "Baja"
+      ],
       "enTarjeta": true
     },
     {
       "id": "canal",
       "etiqueta": "Por dónde llegó",
       "tipo": "opcion",
-      "opciones": ["Mail", "WhatsApp", "Teléfono", "Presencial"]
+      "opciones": [
+        "Mail",
+        "WhatsApp",
+        "Teléfono",
+        "Presencial"
+      ]
     },
-    { "id": "abierto", "etiqueta": "Fecha del reclamo", "tipo": "fecha" },
-    { "id": "detalle", "etiqueta": "Qué pasó", "tipo": "nota" }
+    {
+      "id": "abierto",
+      "etiqueta": "Fecha del reclamo",
+      "tipo": "fecha"
+    },
+    {
+      "id": "detalle",
+      "etiqueta": "Qué pasó",
+      "tipo": "nota"
+    }
   ],
   "calculados": [
     {
       "id": "antiguedad",
       "etiqueta": "Abierto hace",
       "formula": "dias_desde",
-      "argumentos": ["abierto"],
+      "argumentos": [
+        "abierto"
+      ],
       "sufijo": " días"
     }
   ],
@@ -40,21 +79,53 @@
     "singular": "Respuesta",
     "plural": "Respuestas",
     "campos": [
-      { "id": "fecha", "etiqueta": "Fecha", "tipo": "fecha", "requerido": true },
-      { "id": "quien", "etiqueta": "Quién respondió", "tipo": "texto" },
-      { "id": "detalle", "etiqueta": "Qué se respondió", "tipo": "nota", "requerido": true }
+      {
+        "id": "fecha",
+        "etiqueta": "Fecha",
+        "tipo": "fecha",
+        "requerido": true
+      },
+      {
+        "id": "quien",
+        "etiqueta": "Quién respondió",
+        "tipo": "texto"
+      },
+      {
+        "id": "detalle",
+        "etiqueta": "Qué se respondió",
+        "tipo": "nota",
+        "requerido": true
+      }
     ]
   },
   "estados": {
     "etiqueta": "Estado",
-    "valores": ["Nuevo", "En análisis", "Esperando al cliente", "Resuelto"]
+    "valores": [
+      "Nuevo",
+      "En análisis",
+      "Esperando al cliente",
+      "Resuelto"
+    ]
   },
   "indicadores": [
-    { "etiqueta": "Sin abrir", "tipo": "cantidad", "estado": "Nuevo" },
-    { "etiqueta": "En análisis", "tipo": "cantidad", "estado": "En análisis" },
-    { "etiqueta": "Total abiertos", "tipo": "cantidad" }
+    {
+      "etiqueta": "Sin abrir",
+      "tipo": "cantidad",
+      "estado": "Nuevo"
+    },
+    {
+      "etiqueta": "En análisis",
+      "tipo": "cantidad",
+      "estado": "En análisis"
+    },
+    {
+      "etiqueta": "Total abiertos",
+      "tipo": "cantidad"
+    }
   ],
-  "vistas": { "inicial": "tablero" },
+  "vistas": {
+    "inicial": "tablero"
+  },
   "accionesIA": [
     {
       "id": "que_resuelvo",
@@ -155,6 +226,30 @@
       "abierto": "2026-07-28",
       "detalle": "Se le mandó por mail.",
       "estado": "Resuelto"
+    }
+  ],
+  "navegacion": [
+    {
+      "id": "tablero",
+      "etiqueta": "Tablero",
+      "vista": "tablero"
+    },
+    {
+      "id": "todos",
+      "etiqueta": "Todos los casos",
+      "vista": "lista"
+    },
+    {
+      "id": "nuevos",
+      "etiqueta": "Sin abrir",
+      "vista": "lista",
+      "estado": "Nuevo"
+    },
+    {
+      "id": "analisis",
+      "etiqueta": "En análisis",
+      "vista": "lista",
+      "estado": "En análisis"
     }
   ]
 }

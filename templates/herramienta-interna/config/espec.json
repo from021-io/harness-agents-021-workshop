@@ -3,30 +3,74 @@
   "herramienta": {
     "nombre": "Pipeline de clientes",
     "queResuelve": "Ver en qué etapa está cada oportunidad y qué hay que hacer hoy para que avance.",
-    "emoji": "💼"
+    "emoji": "💼",
+    "color": "#2563eb"
   },
-  "registro": { "singular": "Cliente", "plural": "Clientes", "campoTitulo": "nombre" },
+  "registro": {
+    "singular": "Cliente",
+    "plural": "Clientes",
+    "campoTitulo": "nombre"
+  },
   "campos": [
-    { "id": "nombre", "etiqueta": "Nombre", "tipo": "texto", "requerido": true, "enTarjeta": true },
-    { "id": "empresa", "etiqueta": "Empresa", "tipo": "texto", "enTarjeta": true },
-    { "id": "valor", "etiqueta": "Valor estimado", "tipo": "moneda", "enTarjeta": true },
-    { "id": "ultimoContacto", "etiqueta": "Último contacto", "tipo": "fecha" },
-    { "id": "proximaAccion", "etiqueta": "Próxima acción", "tipo": "texto" },
+    {
+      "id": "nombre",
+      "etiqueta": "Nombre",
+      "tipo": "texto",
+      "requerido": true,
+      "enTarjeta": true
+    },
+    {
+      "id": "empresa",
+      "etiqueta": "Empresa",
+      "tipo": "texto",
+      "enTarjeta": true
+    },
+    {
+      "id": "valor",
+      "etiqueta": "Valor estimado",
+      "tipo": "moneda",
+      "enTarjeta": true
+    },
+    {
+      "id": "ultimoContacto",
+      "etiqueta": "Último contacto",
+      "tipo": "fecha"
+    },
+    {
+      "id": "proximaAccion",
+      "etiqueta": "Próxima acción",
+      "tipo": "texto"
+    },
     {
       "id": "canal",
       "etiqueta": "Cómo llegó",
       "tipo": "opcion",
-      "opciones": ["Referido", "Inbound", "Frío", "Evento"]
+      "opciones": [
+        "Referido",
+        "Inbound",
+        "Frío",
+        "Evento"
+      ]
     },
-    { "id": "email", "etiqueta": "Email", "tipo": "email" },
-    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+    {
+      "id": "email",
+      "etiqueta": "Email",
+      "tipo": "email"
+    },
+    {
+      "id": "notas",
+      "etiqueta": "Notas",
+      "tipo": "nota"
+    }
   ],
   "calculados": [
     {
       "id": "diasSinContacto",
       "etiqueta": "Días sin contacto",
       "formula": "dias_desde",
-      "argumentos": ["ultimoContacto"],
+      "argumentos": [
+        "ultimoContacto"
+      ],
       "sufijo": " días"
     }
   ],
@@ -35,20 +79,50 @@
     "singular": "Interacción",
     "plural": "Interacciones",
     "campos": [
-      { "id": "fecha", "etiqueta": "Fecha", "tipo": "fecha", "requerido": true },
-      { "id": "detalle", "etiqueta": "Qué pasó", "tipo": "nota", "requerido": true }
+      {
+        "id": "fecha",
+        "etiqueta": "Fecha",
+        "tipo": "fecha",
+        "requerido": true
+      },
+      {
+        "id": "detalle",
+        "etiqueta": "Qué pasó",
+        "tipo": "nota",
+        "requerido": true
+      }
     ]
   },
   "estados": {
     "etiqueta": "Etapa",
-    "valores": ["Nuevo", "Contactado", "Propuesta", "Ganado", "Perdido"]
+    "valores": [
+      "Nuevo",
+      "Contactado",
+      "Propuesta",
+      "Ganado",
+      "Perdido"
+    ]
   },
   "indicadores": [
-    { "etiqueta": "En juego", "tipo": "suma", "campo": "valor", "estado": "Propuesta" },
-    { "etiqueta": "Ganados", "tipo": "cantidad", "estado": "Ganado" },
-    { "etiqueta": "Total", "tipo": "cantidad" }
+    {
+      "etiqueta": "En juego",
+      "tipo": "suma",
+      "campo": "valor",
+      "estado": "Propuesta"
+    },
+    {
+      "etiqueta": "Ganados",
+      "tipo": "cantidad",
+      "estado": "Ganado"
+    },
+    {
+      "etiqueta": "Total",
+      "tipo": "cantidad"
+    }
   ],
-  "vistas": { "inicial": "tablero" },
+  "vistas": {
+    "inicial": "tablero"
+  },
   "accionesIA": [
     {
       "id": "a_quien_llamo",
@@ -157,6 +231,30 @@
       "email": "nvega@vegatextil.com",
       "notas": "Lo recomendó Diego Ferrari.",
       "estado": "Nuevo"
+    }
+  ],
+  "navegacion": [
+    {
+      "id": "tablero",
+      "etiqueta": "Pipeline",
+      "vista": "tablero"
+    },
+    {
+      "id": "todos",
+      "etiqueta": "Todos",
+      "vista": "lista"
+    },
+    {
+      "id": "propuesta",
+      "etiqueta": "En propuesta",
+      "vista": "lista",
+      "estado": "Propuesta"
+    },
+    {
+      "id": "ganados",
+      "etiqueta": "Ganados",
+      "vista": "lista",
+      "estado": "Ganado"
     }
   ]
 }

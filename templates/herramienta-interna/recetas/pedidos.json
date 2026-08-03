@@ -3,44 +3,109 @@
   "herramienta": {
     "nombre": "Pedidos",
     "queResuelve": "Seguir cada pedido desde que entra hasta que se entrega, sin perder ninguno por el camino.",
-    "emoji": "📦"
+    "emoji": "📦",
+    "color": "#ea580c"
   },
-  "registro": { "singular": "Pedido", "plural": "Pedidos", "campoTitulo": "cliente" },
+  "registro": {
+    "singular": "Pedido",
+    "plural": "Pedidos",
+    "campoTitulo": "cliente"
+  },
   "campos": [
-    { "id": "cliente", "etiqueta": "Cliente", "tipo": "texto", "requerido": true, "enTarjeta": true },
-    { "id": "detalle", "etiqueta": "Qué pidió", "tipo": "texto", "enTarjeta": true },
-    { "id": "cantidad", "etiqueta": "Cantidad", "tipo": "numero" },
-    { "id": "precioUnitario", "etiqueta": "Precio unitario", "tipo": "moneda" },
-    { "id": "entrega", "etiqueta": "Fecha de entrega", "tipo": "fecha", "enTarjeta": true },
-    { "id": "telefono", "etiqueta": "Teléfono", "tipo": "telefono" },
-    { "id": "pagado", "etiqueta": "¿Ya pagó?", "tipo": "booleano" },
-    { "id": "notas", "etiqueta": "Notas", "tipo": "nota" }
+    {
+      "id": "cliente",
+      "etiqueta": "Cliente",
+      "tipo": "texto",
+      "requerido": true,
+      "enTarjeta": true
+    },
+    {
+      "id": "detalle",
+      "etiqueta": "Qué pidió",
+      "tipo": "texto",
+      "enTarjeta": true
+    },
+    {
+      "id": "cantidad",
+      "etiqueta": "Cantidad",
+      "tipo": "numero"
+    },
+    {
+      "id": "precioUnitario",
+      "etiqueta": "Precio unitario",
+      "tipo": "moneda"
+    },
+    {
+      "id": "entrega",
+      "etiqueta": "Fecha de entrega",
+      "tipo": "fecha",
+      "enTarjeta": true
+    },
+    {
+      "id": "telefono",
+      "etiqueta": "Teléfono",
+      "tipo": "telefono"
+    },
+    {
+      "id": "pagado",
+      "etiqueta": "¿Ya pagó?",
+      "tipo": "booleano"
+    },
+    {
+      "id": "notas",
+      "etiqueta": "Notas",
+      "tipo": "nota"
+    }
   ],
   "calculados": [
     {
       "id": "total",
       "etiqueta": "Total",
       "formula": "multiplicar",
-      "argumentos": ["cantidad", "precioUnitario"]
+      "argumentos": [
+        "cantidad",
+        "precioUnitario"
+      ]
     },
     {
       "id": "faltanDias",
       "etiqueta": "Faltan",
       "formula": "dias_hasta",
-      "argumentos": ["entrega"],
+      "argumentos": [
+        "entrega"
+      ],
       "sufijo": " días"
     }
   ],
   "estados": {
     "etiqueta": "Estado",
-    "valores": ["Recibido", "En preparación", "Listo", "Entregado", "Cancelado"]
+    "valores": [
+      "Recibido",
+      "En preparación",
+      "Listo",
+      "Entregado",
+      "Cancelado"
+    ]
   },
   "indicadores": [
-    { "etiqueta": "Por entregar", "tipo": "cantidad", "estado": "En preparación" },
-    { "etiqueta": "Listos", "tipo": "cantidad", "estado": "Listo" },
-    { "etiqueta": "Pedidos totales", "tipo": "cantidad" }
+    {
+      "etiqueta": "Por entregar",
+      "tipo": "cantidad",
+      "estado": "En preparación"
+    },
+    {
+      "etiqueta": "Listos",
+      "tipo": "cantidad",
+      "estado": "Listo"
+    },
+    {
+      "etiqueta": "Pedidos totales",
+      "tipo": "cantidad"
+    }
   ],
-  "vistas": { "inicial": "tablero" },
+  "vistas": {
+    "inicial": "tablero"
+  },
   "accionesIA": [
     {
       "id": "que_urge",
@@ -149,6 +214,30 @@
       "pagado": false,
       "notas": "Confirmar stock antes de preparar.",
       "estado": "Recibido"
+    }
+  ],
+  "navegacion": [
+    {
+      "id": "tablero",
+      "etiqueta": "Tablero",
+      "vista": "tablero"
+    },
+    {
+      "id": "todos",
+      "etiqueta": "Todos los pedidos",
+      "vista": "lista"
+    },
+    {
+      "id": "preparacion",
+      "etiqueta": "En preparación",
+      "vista": "lista",
+      "estado": "En preparación"
+    },
+    {
+      "id": "listos",
+      "etiqueta": "Listos para entregar",
+      "vista": "lista",
+      "estado": "Listo"
     }
   ]
 }
