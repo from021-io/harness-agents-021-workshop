@@ -19,7 +19,7 @@ if [ "$MAJOR" -lt 24 ]; then
 fi
 echo "✅ Node.js $(node --version)"
 
-for t in agente-a-agenda agente-b-noticias; do
+for t in agente-a-agenda agente-b-noticias herramienta-interna; do
   echo ""
   echo "📦 Preparando $t (puede tardar unos minutos)..."
   (cd "templates/$t" && npm install --no-audit --no-fund)

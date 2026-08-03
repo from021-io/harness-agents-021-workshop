@@ -52,6 +52,7 @@ Regla: primero decí qué estás haciendo en criollo, después (si suma) el nomb
    - `agent/instructions.md`: reemplazá TODOS los placeholders `{{...}}` con datos reales del brief. Releé el resultado: tiene que sonar como un agente hecho a medida para esa persona.
    - Agenda: ajustá el cron de `agent/schedules/digest_agenda.ts` al horario pedido (¡convertí a UTC!), y **generá `data/backlog.md` personalizado**: 8-10 tareas manteniendo el formato del template (checkboxes, prioridad, fecha límite). Base: las 2-3 pendientes reales del brief + el resto inventadas pero creíbles para su rol y su vida (que suenen a su semana, no a lorem ipsum). Mezclá estados: 1-2 vencidas (fecha pasada, para que el primer digest tenga urgencia real), 5-6 pendientes con fechas próximas, 2 hechas. Usá fechas relativas a HOY.
    - Noticias: ajustá el cron de `agent/schedules/digest_noticias.ts` (a UTC), y verificá que el tema elegido exista en `config/fuentes.json`. Si pidió un tema nuevo, buscá 2-3 feeds RSS, PROBALOS con un fetch antes de agregarlos, y agregá la clave nueva.
+   - Herramienta: ver la sección "Camino herramienta" abajo.
 4. **Credenciales** (las únicas cosas que hace el usuario; 4a y 4b ya se las diste en el paso 2; ahora cerrás cada una apenas esté):
    a. **Llave del modelo**: "pedile la llave a quien da el taller (el nombre está en los Datos del taller del CLAUDE.md raíz); después abrí el archivo [.env](mi-agente/.env) que te dejé listo y pegala después de `AI_GATEWAY_API_KEY=`". Si todavía no la tiene, que la pida YA: es lo primero del carril usuario, así no bloquea después.
    b. **Bot de Telegram**: guialo a hacerlo desde **Telegram Web en la compu** ([web.telegram.org](https://web.telegram.org), ya debería estar abierto de la preparación), así copia y pega el token en vez de tipearlo del celular. Pasos textuales: buscar **@BotFather** en el buscador de arriba → abrirlo → escribir `/newbot` → poner un nombre visible (ej "Asistente de Ana") → poner un usuario que termine en `bot` (ej `ana_asiste_bot`) → copiar el código largo que devuelve. Ese código va en [.env](mi-agente/.env) después de `TELEGRAM_BOT_TOKEN=`. Si no tiene sesión web abierta, que abra web.telegram.org y la vincule con el celular (Ajustes → Dispositivos → Vincular dispositivo → escanear el QR).
@@ -69,6 +70,22 @@ Regla: primero decí qué estás haciendo en criollo, después (si suma) el nomb
    - Agenda: `GOOGLE_REFRESH_TOKEN` presente en `.env` Y la prueba interna lee la agenda real sin errores y sin mensajes tipo "falta conectar el calendario". Un agente de agenda sin calendario NO está listo (salvo fallback OAuth documentado, y en ese caso se lo explicás antes de que pruebe).
 7. **El momento "probalo"**: abrí el preview vos (herramientas de browser sobre `http://localhost:3000`) y presentale su agente con las dos vías, explícitas. La principal: "agarrá el celular y escribile a tu bot @<usuario_bot>: pedile *mandame la propuesta de hoy* (o *el resumen de hoy*), o preguntale lo que quieras"; la secundaria: "también podés chatear acá en el navegador". Avisale que por Telegram tarda unos segundos en contestar, que no repita el mensaje. Cerrá explicando que eso mismo que pidió a mano le va a llegar solo todos los días a la hora que eligió, cuando lo publique.
 
+# Camino herramienta
+
+El template es `templates/herramienta-interna/`. Es el camino más rápido de los tres: **solo necesita la llave del modelo**, ni Telegram ni Google. Todo lo demás del proceso (copiar, personalizar, verificar, preview) es igual.
+
+Lo que cambia:
+
+1. **Escribí `config/espec.json` desde el brief.** Arrancá de la receta más parecida en `recetas/` (pipeline-ventas, pedidos, inventario, tickets-soporte, candidatos) y adaptala. Si ninguna se parece, escribí la especificación de cero: el motor es genérico y no depende del catálogo. Los tipos de campo y las fórmulas son los que están en `lib/espec.ts`, no inventes otros.
+2. **Generá una semilla creíble**: 8-12 registros que suenen al negocio de esa persona, con nombres, montos y fechas plausibles, repartidos entre todas las etapas y con algo que llame la atención (algo trabado, algo urgente). Nada de "Cliente 1, Cliente 2": la demo se sostiene en que parezcan reales. Usá fechas relativas a HOY.
+3. **Validá antes de levantar**: `npm run validar-espec`. Si falla, corregí y repetí. Nunca levantes la app con una especificación rota.
+4. **Aplicá el color elegido** en `app/globals.css`: cambiá `--primary` y `--accent` (están en oklch, hay bloque claro y oscuro). Solo variables: no toques componentes para cambiar colores.
+5. **Personalizá `agent/instructions.md`** con los placeholders del brief (nombre de la herramienta, qué resuelve, qué es una ficha, estados, tono).
+6. **Verificá**: typecheck, health, la app carga con la semilla repartida, se crea una ficha desde el formulario, se mueve entre etapas y los datos sobreviven al refresh. Con la llave puesta, probá el asistente: una pregunta sobre los datos y un pedido de cambio que termine en propuesta aplicable.
+7. **Presentá abriendo el navegador vos**: acá el entregable es la pantalla. "Esta es tu herramienta, ya tiene tus datos de ejemplo. Probá mover una ficha y después preguntale algo al asistente."
+
+Y contale, sin dramatizar, que los datos se guardan en su navegador: quedan en esa computadora y no se comparten. Anotalo en `DECISIONES.md`.
+
 # Reglas duras
 
 - PROHIBIDO en la V1: autenticación, Supabase, cualquier base de datos externa. Si el brief lo menciona como mejora futura, ignoralo por hoy.
@@ -77,6 +94,7 @@ Regla: primero decí qué estás haciendo en criollo, después (si suma) el nomb
 - Errores: los resolvés vos. Al usuario solo le contás "encontré un detalle y ya lo arreglé" si hace falta decir algo. Si algo falla más de 2 veces, aplicá el fallback del CLAUDE.md raíz y anotalo.
 - Docs de eve: `mi-agente/node_modules/eve/docs/`. Leé el tema puntual antes de tocar código eve que no conozcas.
 - Nunca escribas raya (—) ni guion largo, ni en el chat ni en los archivos que generás (regla 4 del CLAUDE.md raíz).
+- **La UI se compone, no se escribe.** El proyecto ya trae Tailwind y shadcn/ui: usá los componentes de `components/ui/` y agregá los que falten con `npx shadcn@latest add <nombre>`. Prohibido escribir CSS suelto o componentes propios cuando existe el equivalente. Los colores se cambian en las variables de `app/globals.css`, nunca componente por componente.
 - **Cada vez que le pidas al usuario que abra o edite un archivo, dale el link clickeable** en formato markdown con la ruta relativa: `[.env](mi-agente/.env)`, `[tu lista de tareas](mi-agente/data/backlog.md)`, `[DECISIONES.md](mi-agente/DECISIONES.md)`. Nunca lo dejes escrito como texto suelto ni le expliques cómo navegar carpetas: un click y se le abre.
 - **Zona horaria: detectala, no la adivines.** La verdad es la máquina del usuario: `node -e "console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)"`. Escribila en el `.env` como `ZONA_HORARIA=` y en `{{ZONA_HORARIA}}` de `instructions.md`. Si no coincide con la ciudad que dijo en la entrevista (viaja, tiene la compu en otra zona), preguntale en criollo cuál usar: "¿te escribo en horario de México o de otro lado?". Nunca deduzcas la zona solo del nombre de la ciudad.
 - **El cron va en UTC y la conversión se CALCULA, no se estima.** Corré esto con su hora y su zona reales y usá el resultado:

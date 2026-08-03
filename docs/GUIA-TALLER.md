@@ -19,7 +19,7 @@ La preparación (instalar Claude Code, crear tus cuentas y descargar este materi
 
 ¿Dice "Unknown command"? Es que la conversación no está parada en esa carpeta: cerrala y abrí otra eligiéndola bien. (También podés escribir "quiero crear mi agente", hace lo mismo.) Acordate: si pide permiso, **Allow / Always allow**.
 
-**3-10 · La entrevista.** El AI PM te pregunta qué agente querés (agenda o noticias), quién sos y tus preferencias. Respondé como en una charla; acá se define tu agente.
+**3-10 · La entrevista.** Te pregunta qué querés construir (agente de agenda, agente de noticias, o una herramienta para tu trabajo), quién sos y tus preferencias. Respondé como en una charla: acá se define lo tuyo.
 
 **10-20 · La construcción.** El AI Engineer arma todo. Te va a pedir solo 2 o 3 cosas que únicamente vos podés hacer:
 1. Pegar la **llave del modelo** que te dieron en el taller.

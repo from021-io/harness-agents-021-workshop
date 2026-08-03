@@ -7,12 +7,12 @@ No escribís código. Un equipo de IA lo hace por vos:
 - Un **AI Product Manager** te entrevista para entender quién sos y qué querés.
 - Un **AI Engineer** construye tu agente, toma todas las decisiones técnicas solo (y te las anota en criollo), lo prueba y te lo muestra andando.
 
-## Los dos agentes para elegir
+## Qué podés construir
 
-| | 🗓️ Agente de agenda | 📰 Agente de noticias |
-|---|---|---|
-| Qué hace | Cada mañana mira tus pendientes y tu Google Calendar, te propone por Telegram un bloque de trabajo concreto y, si aceptás, te lo agenda. | Una vez por día te manda por Telegram las noticias más relevantes de un tema que elijas (economía, tecnología, IA, deportes…). |
-| Conexiones | Telegram + Google Calendar | Telegram + fuentes de noticias ya configuradas |
+| | 🗓️ Agente de agenda | 📰 Agente de noticias | 🧰 Herramienta para tu trabajo |
+|---|---|---|---|
+| Qué hace | Cada mañana mira tus pendientes y tu Google Calendar, te propone por Telegram un bloque de trabajo concreto y, si aceptás, te lo agenda. | Una vez por día te manda por Telegram las noticias más relevantes de un tema que elijas (economía, tecnología, IA, deportes…). | Una pantalla para ordenar un proceso tuyo (clientes, pedidos, stock, reclamos, candidatos): fichas que se mueven por etapas, con un asistente de IA que responde sobre tus datos, carga fichas al dictado y escribe tus mensajes. |
+| Necesita | Telegram + Google Calendar | Telegram + fuentes ya configuradas | Nada más que la llave del modelo |
 
 ## Qué necesitás antes de empezar
 
@@ -51,7 +51,8 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 ## Cómo está armado (para curiosos)
 
 - Los agentes corren sobre [eve](https://eve.dev), un framework para agentes de IA durables, con chat web incluido y deploy a Vercel.
-- `templates/` tiene los dos agentes ya construidos y probados; tu versión personalizada se crea en `mi-agente/`.
+- `templates/` tiene los tres proyectos ya construidos y probados; tu versión personalizada se crea en `mi-agente/`.
+- La herramienta interna se arma desde `config/espec.json`: cambiar campos, etapas o atajos de IA es editar ese archivo, no escribir código.
 - `.claude/` tiene el equipo de IA (PM + Engineer) y los comandos del taller.
 - Más detalle en [docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md).
 

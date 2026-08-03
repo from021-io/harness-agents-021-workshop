@@ -13,7 +13,7 @@ Regalo de cierre del taller: una mini presentación del agente que la persona ac
 2. **Armá el deck** en `mi-agente/pitch/index.html`, un solo archivo autocontenido (CSS y JS inline, sin librerías externas, funciona abierto con doble click):
    - **Máximo 5 slides**, navegación con flechas del teclado, click/tap y puntitos de progreso. Tipografía grande, una idea por slide.
    - **Tema visual = su respuesta**: paleta de colores, emojis y algún detalle gracioso derivados de la fruta/destino/lo que haya dicho (frutilla → rojos y rosas con semillas de fondo; Japón → rojo/blanco con un torii). Que se note el guiño sin ser un chiste largo.
-   - **Contenido desde `PRODUCTO.md` y `DECISIONES.md`** (nunca inventes capacidades que el agente no tiene):
+   - **Contenido desde `PRODUCTO.md` y `DECISIONES.md`** (más `config/espec.json` si es una herramienta). Nunca inventes capacidades que no tiene:
      1. Portada: nombre del agente (inventale uno con gracia si no tiene), "el asistente de [nombre]", fecha del taller.
      2. El problema: su día a día, en sus palabras (del brief).
      3. Qué hace: las 2-3 capacidades reales, en beneficios ("te propone el mejor hueco del día", no "usa la API de Calendar").

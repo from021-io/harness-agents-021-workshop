@@ -13,7 +13,7 @@ Decile una línea tipo "dame diez segundos que lo despierto" y hacé esto:
 
 1. **Matá todo lo viejo**: el servidor (`lsof -ti:3000 -ti:3001 | xargs kill`) y el puente (`pkill -f telegram-local`). Esperá a que los puertos queden libres de verdad; si no, Next arranca en otro puerto y el puente le habla al vacío.
 2. **Levantá el servidor**: `npm run dev` en `mi-agente/` en background. Esperá health ok (hasta ~40s).
-3. **Levantá el puente**: `npm run telegram-local` en background. Confirmá en su salida que encontró el agente.
+3. **Levantá el puente**: `npm run telegram-local` en background. Confirmá en su salida que encontró el agente. En el camino herramienta no hay puente: saltealo.
 4. **Probá vos primero** por la API interna (`POST /eve/v1/session`) que el agente responde y que sus herramientas andan. No le pidas al usuario que pruebe algo que no probaste.
 5. **Avisale**: "listo, ya está de nuevo en línea. Escribile por Telegram". Si venía de una conversación trabada, pedile que le mande un mensaje nuevo en vez de responder al viejo.
 

@@ -10,7 +10,18 @@
 - Los dos viven en `.claude/agents/` (formato de subagente) pero **se leen y se siguen en el hilo principal**. Delegarlos rompe la experiencia: la salida de un subagente le llega al usuario dentro de una caja "Message from ai-engineer", con las instrucciones internas a la vista y duplicada por el relato del hilo principal.
 - `.claude/skills/`: los comandos `/crear-agente`, `/probar`, `/publicar`.
 
-**2. Los templates eve** (`templates/`): dos agentes completos sobre [eve](https://eve.dev) (v0.28), cada uno un proyecto Next.js con el agente embebido vía `withEve`, lo que da chat web en `localhost:3000` y API en `/eve/v1/*`.
+**2. Los templates eve** (`templates/`): tres proyectos completos sobre [eve](https://eve.dev) (v0.28), cada uno Next.js con el agente embebido vía `withEve`, lo que da chat web en `localhost:3000` y API en `/eve/v1/*`. Dos son agentes que hablan por Telegram; el tercero es una herramienta interna con la IA adentro de la pantalla.
+
+## La herramienta interna: un motor manejado por especificación
+
+En vez de un template por dominio, hay **un motor genérico** que se arma leyendo `config/espec.json`. Sumar un tipo de herramienta nuevo es escribir un JSON, no tocar código.
+
+- `lib/espec.ts`: el contrato, validado con Zod. Tipos de campo y fórmulas son catálogos **cerrados**, y hay reglas cruzadas que atrapan lo que un schema plano deja pasar (un campo título que no existe, un calculado que apunta a la nada, una semilla con un estado inválido). `npm run validar-espec` corre esa misma validación desde la terminal, así el error aparece antes de levantar la app.
+- `lib/datos.ts`: CRUD sobre localStorage, con semilla, huella de esquema (si cambia la estructura, resiembra en vez de romper), campos calculados e indicadores. Las fechas sin hora se leen como día local: si no, en América se muestran un día antes.
+- `app/_components/`: tablero con arrastre, lista con búsqueda, ficha con sub-lista, formulario armado desde los campos. Todo compuesto con shadcn/ui, que ya viene en el scaffold. El color se cambia en las variables de `app/globals.css`, nunca componente por componente.
+- `recetas/`: cinco especificaciones ya probadas (ventas, pedidos, inventario, soporte, candidatos) que sirven de punto de partida. El motor no depende de ellas: una especificación escrita de cero funciona igual.
+
+**El asistente** sigue la lógica de Notion AI: preset fijo de cinco capacidades (preguntar, cargar al dictado, actualizar o mover, redactar, resumir) y atajos que salen de las `accionesIA` de cada especificación. Los datos viven en el navegador, así que viajan como `clientContext` de eve: alcanzan al modelo pero no quedan en el historial. Solo dos herramientas: `proponer_cambios`, que valida cada acción contra la especificación y deja una propuesta que la persona aplica con un click, y `redactar`, que solo devuelve texto. **La IA nunca escribe sola**, y por eso un registro con texto malicioso no puede ejecutar nada: toda escritura pasa por validación y por un click humano.
 
 ## Anatomía de un template
 

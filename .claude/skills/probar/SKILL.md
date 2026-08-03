@@ -7,7 +7,11 @@ description: Levanta el agente del usuario en local, abre el preview y dispara e
 
 Todo lo hacés vos; el usuario solo mira y chatea. Reglas del CLAUDE.md raíz aplican.
 
-## Pasos
+## Si es una herramienta (existe `mi-agente/config/espec.json`)
+
+No hay Telegram, ni puente, ni envíos programados. Levantá el servidor (`npm run dev` en background, health ok), abrí el navegador en `http://localhost:3000` y confirmá que el tablero muestra los datos. Después decile: "probá mover una ficha de una etapa a otra, y preguntale algo al asistente". Si la especificación tiene errores, la app los lista en pantalla: corregilos vos y recargá.
+
+## Si es un agente
 
 1. Verificá que `mi-agente/` existe y tiene `.env` con la llave del modelo. Si no, decile que primero corra `/crear-agente`.
 2. Si el server no está corriendo: `npm run dev` en `mi-agente/` en background. Esperá a que `curl http://localhost:3000/eve/v1/health` responda ok (hasta ~40s).
