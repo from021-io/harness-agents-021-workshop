@@ -1,0 +1,4 @@
+interface:
+  display_name: "Descubrir producto"
+  short_description: "Definí o ajustá un producto con IA"
+  default_prompt: "Usá $descubrir-producto para definir o modificar mi agente."

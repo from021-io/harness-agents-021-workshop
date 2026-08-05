@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modificar agente"
+  short_description: "Ajustá un agente existente sin rehacerlo"
+  default_prompt: "Usá $modificar-agente para cambiar mi agente existente."

@@ -1,6 +1,6 @@
 # harness-agents-021. Taller: creá tu agente de IA
 
-Este repo es un harness de taller. La persona que lo usa **NO es técnica**: es alguien que en 30 minutos quiere tener su propio agente de IA funcionando. Vos (Claude Code) hacés todo el trabajo técnico. La persona solo responde preguntas sobre su vida, su trabajo y sus preferencias.
+Este repo es un harness de taller. La persona que lo usa **NO es técnica**: es alguien que en 30 minutos quiere crear o ajustar su propio agente de IA. Vos (Claude Code) hacés todo el trabajo técnico. La persona habla de su vida, su trabajo y el resultado que busca.
 
 ## Qué se construye acá
 
@@ -21,10 +21,11 @@ Config del evento. Quien da el taller actualiza esta línea antes de empezar:
 ## El flujo del taller
 
 1. La persona escribe `/crear-agente`.
-2. Siguiendo el playbook **ai-pm** se la entrevista (producto y perfil personal, nunca nada técnico) y se escribe `mi-agente/PRODUCTO.md`.
+2. Siguiendo la skill **descubrir-producto** en modo creación se entiende el problema, se carga solo la referencia necesaria y se escribe `mi-agente/PRODUCTO.md`.
 3. Siguiendo el playbook **ai-engineer** (en el hilo principal, sin delegar: si no, el usuario no ve la narración) se copia el template elegido a `mi-agente/`, se personaliza con el brief, se resuelve todo lo técnico solo, y queda el agente corriendo con preview abierto para que la persona lo pruebe.
 4. `/probar` levanta el agente y dispara el envío del día para verlo funcionando ya.
 5. `/publicar` lo pone a vivir en internet (Vercel) para que funcione solo todos los días.
+6. Cuando ya existe un producto, `/modificar-agente` usa la misma skill en modo modificación, escribe un cambio de comportamiento bajo `mi-agente/cambios/`, aplica solamente ese delta y vuelve a verificar.
 
 ## Reglas de oro (no negociables)
 
@@ -38,6 +39,8 @@ Config del evento. Quien da el taller actualiza esta línea antes de empezar:
 8. **Timebox.** El taller dura 30 minutos. Si algo falla más de 2 veces, aplicá el fallback documentado abajo, anotalo en `DECISIONES.md` y seguí adelante. Nunca dejes al usuario mirando un error.
 9. **No toques `templates/`.** Los templates son la referencia limpia. Todo el trabajo del usuario pasa en `mi-agente/`.
 10. **El trabajo se guarda en SU GitHub.** El repo local es un fork del participante. Al cerrar el taller (o cuando haya algo valioso), guardá el avance vos: commit de `mi-agente/` y push a su fork, explicado como "guardé tu agente en tu GitHub". Jamás comitees `.env` ni ningún secreto (verificá con `git status` antes), y jamás intentes pushear al repo original del taller.
+11. **Descubrimiento modular.** La skill `descubrir-producto` contiene el proceso genérico. Los detalles de agenda, noticias y herramienta viven en referencias separadas y se carga solamente una después de conocer el tipo de producto.
+12. **Modificar no es reconstruir.** En `/modificar-agente` se inspecciona primero el producto, se acuerda qué cambia y qué se conserva, y se toca el mínimo necesario. Nunca se copia nuevamente el template ni se reemplazan secretos o datos existentes.
 
 ## Cómo trabajar con eve
 

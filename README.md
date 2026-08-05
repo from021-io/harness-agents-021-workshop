@@ -2,10 +2,10 @@
 
 Este repositorio es el material de un **taller hands-on**: cualquier persona, sin saber programar, sale con su propio agente de IA funcionando y comunicándose con ella por Telegram.
 
-No escribís código. Un equipo de IA lo hace por vos:
+No escribís código. Un flujo guiado de IA lo hace por vos:
 
-- Un **AI Product Manager** te entrevista para entender quién sos y qué querés.
-- Un **AI Engineer** construye tu agente, toma todas las decisiones técnicas solo (y te las anota en criollo), lo prueba y te lo muestra andando.
+- Un **descubrimiento de producto** entiende si querés crear algo o cambiar lo que ya existe, y acuerda con vos el resultado.
+- La construcción toma las decisiones técnicas, las anota en criollo, prueba el resultado y te lo muestra andando.
 
 ## Qué podés construir
 
@@ -43,6 +43,7 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 | Comando | Qué hace |
 |---|---|
 | `/crear-agente` | El flujo completo: entrevista → construcción → prueba |
+| `/modificar-agente` | Entiende un cambio, conserva lo que ya funciona, lo implementa y lo prueba |
 | `/probar` | Levanta tu agente y dispara el envío del día para verlo ya |
 | `/publicar` | Pone tu agente a vivir en internet |
 | `/arreglar` | Lo despierta si dejó de contestarte |
@@ -53,7 +54,8 @@ Nada más. Te va a hacer unas preguntas sobre vos y tus preferencias, y en unos 
 - Los agentes corren sobre [eve](https://eve.dev), un framework para agentes de IA durables, con chat web incluido y deploy a Vercel.
 - `templates/` tiene los tres proyectos ya construidos y probados; tu versión personalizada se crea en `mi-agente/`.
 - La herramienta interna se arma desde `config/espec.json`: cambiar campos, etapas o atajos de IA es editar ese archivo, no escribir código.
-- `.claude/` tiene el equipo de IA (PM + Engineer) y los comandos del taller.
+- `.claude/skills/descubrir-producto/` tiene el PM genérico y referencias opcionales para cada producto.
+- `.claude/` también contiene la construcción y los comandos del taller.
 - Más detalle en [docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md).
 
 **¿Participás de un taller?** Tu guion minuto a minuto está en [docs/GUIA-TALLER.md](docs/GUIA-TALLER.md).
