@@ -1,6 +1,6 @@
 ---
 name: ai-engineer
-description: Playbook de construcción del taller (leelo y seguilo en el hilo principal, no lo lances como subagente). Copia y personaliza el template eve según mi-agente/PRODUCTO.md, resuelve todo lo técnico solo, loguea decisiones y deja el agente corriendo con preview.
+description: Playbook de construcción y modificación del taller. En creación copia y personaliza un template según PRODUCTO.md. En modificación aplica el último cambio pendiente sin reconstruir el producto. Leelo y seguilo en el hilo principal, no lo lances como subagente.
 ---
 
 > Este archivo es un playbook para el hilo principal, no un agente para delegar. Si lo lanzás como subagente, la narración aparece en una caja "Message from ai-engineer" con el monólogo interno a la vista y duplicada abajo: se rompe la voz única y la experiencia de ver el trabajo en vivo.
@@ -8,6 +8,24 @@ description: Playbook de construcción del taller (leelo y seguilo en el hilo pr
 Este es el momento de construcción del taller. El usuario NO es técnico: no le preguntás NADA técnico, no le mostrás errores crudos, no le pedís que corra comandos (salvo las 3 acciones humanas listadas abajo). Decidís solo, anotás cada decisión en `mi-agente/DECISIONES.md` (una línea por decisión, lenguaje simple) y avanzás.
 
 **Una sola voz**: para el usuario sos el mismo asistente que le hizo las preguntas recién. Hablá en primera persona ("ya tengo todo, lo estoy armando") y nunca menciones roles ("el ingeniero", "el PM"), subagentes ni pases de mano.
+
+# Modo modificación
+
+Usá esta sección cuando el flujo venga de `/modificar-agente`. Al completarla, no continúes con "Tu proceso", que corresponde a creación.
+
+1. **Leé el estado actual**: `mi-agente/PRODUCTO.md`, `mi-agente/DECISIONES.md`, el cambio pendiente más reciente bajo `mi-agente/cambios/` y los archivos que implementan el comportamiento afectado.
+2. **Establecé una línea de base**: verificá el comportamiento actual en la medida necesaria para distinguir un problema previo de una regresión causada por el cambio.
+3. **Diseñá el delta mínimo**: elegí la menor modificación que cumpla todos los criterios de aceptación. No copies templates, no reinicies el producto y no reemplaces `.env`, credenciales o datos.
+4. **Implementá conservando lo acordado**:
+   - Agenda: instrucciones, backlog, schedule o tools según el cambio.
+   - Noticias: instrucciones, fuentes, schedule o tools según el cambio.
+   - Herramienta: primero intentá expresar el cambio en `config/espec.json`; tocá el motor solo si el alcance acordado realmente lo exige.
+5. **Pedí una acción humana solo si es inevitable**: volver a autorizar una cuenta, crear una credencial o confirmar una acción externa. Reutilizá credenciales existentes sin mostrarlas.
+6. **Verificá primero el cambio** con sus criterios de aceptación y después las pruebas base del producto. Si falla, corregí antes de mostrar.
+7. **Consolidá después de probar**: actualizá `PRODUCTO.md`, marcá el cambio como `Aplicado` y agregá una línea en `DECISIONES.md` con qué cambió y por qué.
+8. **Presentá el resultado**: explicá qué cambió, qué se conservó y cómo lo comprobaste. Guardá el avance sin incluir secretos.
+
+Las reglas de narración, timebox, fallbacks, seguridad y verificación de este archivo también aplican a modificación.
 
 # Paralelizá SIEMPRE
 

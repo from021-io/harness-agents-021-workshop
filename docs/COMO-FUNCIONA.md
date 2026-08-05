@@ -2,13 +2,15 @@
 
 ## Las dos capas
 
-**1. El harness de Claude Code** (`.claude/` + `CLAUDE.md`): un workflow AI PM → AI Engineer pensado para usuarios no técnicos.
+**1. El harness de Claude Code** (`.claude/` + `CLAUDE.md`): descubrimiento genérico seguido por construcción o modificación, pensado para usuarios no técnicos.
 
 - `CLAUDE.md`: las reglas del juego. Las importantes: el usuario nunca responde preguntas técnicas; la V1 jamás incluye auth ni base de datos; todo en español simple; nada se muestra sin estar verificado; toda decisión técnica queda logueada en `mi-agente/DECISIONES.md`.
-- `.claude/agents/ai-pm.md`: playbook de la entrevista (producto + perfil de la persona) que produce `mi-agente/PRODUCTO.md`.
+- `.claude/skills/descubrir-producto/SKILL.md`: proceso genérico para definir una creación o una modificación. Produce `PRODUCTO.md` al crear y un cambio bajo `mi-agente/cambios/` al modificar.
+- `.claude/skills/descubrir-producto/references/`: conocimiento específico de agenda, noticias y herramienta. Se lee una sola referencia después de elegir el producto; no forma parte del cuestionario central.
+- `.claude/agents/ai-pm.md`: punto de entrada para ejecutar el descubrimiento genérico en el hilo principal.
 - `.claude/agents/ai-engineer.md`: playbook de construcción: copia el template, lo personaliza con el brief, resuelve credenciales con el usuario (lo único humano: pegar la llave, hablar con @BotFather, tocar "Permitir" en Google), verifica y abre el preview.
-- Los dos viven en `.claude/agents/` (formato de subagente) pero **se leen y se siguen en el hilo principal**. Delegarlos rompe la experiencia: la salida de un subagente le llega al usuario dentro de una caja "Message from ai-engineer", con las instrucciones internas a la vista y duplicada por el relato del hilo principal.
-- `.claude/skills/`: los comandos `/crear-agente`, `/probar`, `/publicar`.
+- Los playbooks bajo `.claude/agents/` se leen y se siguen en el hilo principal. Delegarlos rompe la experiencia: la salida llega dentro de una caja con instrucciones internas y duplica el relato.
+- `.claude/skills/`: los comandos `/crear-agente`, `/modificar-agente`, `/probar` y `/publicar`, además del descubrimiento reutilizable.
 
 **2. Los templates eve** (`templates/`): tres proyectos completos sobre [eve](https://eve.dev) (v0.28), cada uno Next.js con el agente embebido vía `withEve`, lo que da chat web en `localhost:3000` y API en `/eve/v1/*`. Dos son agentes que hablan por Telegram; el tercero es una herramienta interna con la IA adentro de la pantalla.
 
@@ -53,7 +55,7 @@ Decisiones de diseño relevantes:
 
 ```
 /crear-agente
-   └─ ai-pm  ──entrevista──▶  mi-agente/PRODUCTO.md
+   └─ descubrir-producto (modo creación) → mi-agente/PRODUCTO.md
    └─ ai-engineer
         ├─ copia templates/<elegido>/ → mi-agente/
         ├─ personaliza instructions.md, cron, fuentes/backlog
@@ -62,6 +64,16 @@ Decisiones de diseño relevantes:
         └─ mi-agente/DECISIONES.md (log de todo lo que decidió)
 /publicar
    └─ vercel login/link/env/deploy → setWebhook de Telegram → prueba en vivo
+
+/modificar-agente
+   └─ descubrir-producto (modo modificación)
+        ├─ inspecciona PRODUCTO.md + DECISIONES.md + comportamiento actual
+        ├─ acuerda resultado, cosas que se conservan y criterios de aceptación
+        └─ escribe mi-agente/cambios/<fecha>-<tema>.md
+   └─ ai-engineer (modo modificación)
+        ├─ aplica el delta mínimo, sin copiar el template
+        ├─ verifica criterios + regresión básica
+        └─ actualiza PRODUCTO.md, DECISIONES.md y estado del cambio
 ```
 
 ## El camino avanzado (post-taller)
