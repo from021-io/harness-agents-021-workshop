@@ -21,7 +21,7 @@
     "@vercel/connect": "0.4.2",
     "ai": "^7.0.38",
     "eve": "^0.28.0",
-    "zod": "4.4.3",
+    "zod": "4.6.7",
     "@radix-ui/react-use-controllable-state": "1.2.2",
     "@shikijs/core": "4.1.0",
     "@shikijs/engine-javascript": "4.1.0",
@@ -36,11 +36,11 @@
     "cmdk": "1.1.1",
     "lucide-react": "1.16.0",
     "motion": "12.40.0",
-    "nanoid": "5.1.11",
-    "next": "16.3.0-preview.6",
+    "nanoid": "5.1.16",
+    "next": "16.4.3",
     "radix-ui": "1.4.3",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "shiki": "4.1.0",
     "streamdown": "2.5.0",
     "tailwind-merge": "3.6.0",
@@ -55,7 +55,14 @@
     "@types/react-dom": "19.2.3"
   },
   "overrides": {
-    "ai": "^7.0.38"
+    "ai": "^7.0.38",
+    "eve": {
+      "undici": "^8.12.3"
+    },
+    "katex": "0.18.2",
+    "@vercel/cli-config": {
+      "zod@>=4 <4.6.6": "4.6.7"
+    }
   },
   "engines": {
     "node": "24.x"
